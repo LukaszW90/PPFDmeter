@@ -29,10 +29,13 @@ GPIO 0 (Analog 0)  - joy 1 x
 namespace HwConfig
 {
 
-    /* RTC */
+    /* I2C */
     constexpr gpio_num_t I2cSdaPin = GPIO_NUM_6;
     constexpr gpio_num_t I2cSclPin = GPIO_NUM_7;
     constexpr int I2cFreq = 40000;
+
+    /* OLED */
+    constexpr uint8_t OledAddr = 0x3C;
 
     /* Uart  */
     constexpr gpio_num_t UartRxPin = GPIO_NUM_20;

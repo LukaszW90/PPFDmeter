@@ -19,6 +19,7 @@ extern "C" {
 #include "common.hpp"
 #include "HwInput.hpp"
 #include "I2c.hpp"
+#include "OledDisplay.hpp"
 #include "Shell.hpp"
 #include "Uart.hpp"
 #include "BtSerial.hpp"
@@ -30,7 +31,7 @@ namespace TaskPeriod_ms
 {
 
     constexpr int Shell = 50;
-    constexpr int Controller = 50;
+    constexpr int Controller = 30;
 }
 ///constexpr auto STEP_DELAY = std::chrono::milliseconds(STEP_DELAY_MS);
 
@@ -47,6 +48,7 @@ extern "C" void app_main() {
     hwSwitchInput::init();
     Uart::init();
     I2C::init();
+    OledDisplay::init();
    /// Timer::init();
     NvsManager::initNvs(); 
 

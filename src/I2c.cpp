@@ -62,3 +62,20 @@ int I2C::scan(int *devAddr)
 
     return devices;
 }
+
+esp_err_t I2C::write_bytes(uint8_t device_address, uint8_t reg_address, const uint8_t* data, size_t data_len) 
+{
+        i2c_cmd_handle_t cmd = i2c_cmd_link_create();
+        i2c_master_start(cmd);
+        // Adres urządzenia z bitem zapisu
+        i2c_master_write_byte(cmd, (device_address << 1) | I2C_MASTER_WRITE, true);
+        // Adres rejestru docelowego (lub bajt kontrolny)
+        i2c_master_write_byte(cmd, reg_address, true);
+        // Faktyczne dane
+        i2c_master_write(cmd, data, data_len, true);
+        i2c_master_stop(cmd);
+        
+        esp_err_t ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, pdMS_TO_TICKS(50));
+        i2c_cmd_link_delete(cmd);
+        return ret;
+    }
