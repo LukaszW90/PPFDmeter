@@ -1,0 +1,41 @@
+{
+	"folders": [
+		{
+			"name": "ESP32-CAM",
+			"path": "../../../../../../../media/lukasz/55DFF36A13D271611/programming/ESP32-CAM"
+		},
+		{
+			"name": "hello_world",
+			"path": "../../../../../../../media/lukasz/55DFF36A13D27161/programming/esp-idf-master/examples/get-started/hello_world"
+		},
+		{
+			"name": "ESP32_DfplayerMini",
+			"path": "../../../../../../../media/lukasz/55DFF36A13D271611/programming/ESP32_DfplayerMini"
+		},
+		{
+			"name": "ESP32-Cam-test-v.2.0",
+			"path": "../../ESP32-Cam-test-v.2.0"
+		},
+		{
+			"name": "ESP32_serwo_test",
+			"path": "../../../../../../../media/lukasz/55DFF36A13D271611/programming/ESP32_serwo_test"
+		},
+		{
+			"name": "ESP32-myk_z_laserka",
+			"path": "../../../../../../../media/lukasz/55DFF36A13D271611/programming/ESP32-myk_z_lasera/ESP32-myk_z_laserka"
+		},
+		{
+			"name": "GUTAS_Cam",
+			"path": "../../../../../../../media/lukasz/55DFF36A13D271611/programming/GUTAS/GUTAS_Cam"
+		},
+		{
+			"name": "GUTAS_Main",
+			"path": "../../../../../../../media/lukasz/55DFF36A13D271611/programming/GUTAS/GUTAS_Main"
+		},
+		{
+			"name": "ESp32_C3_miniTest",
+			"path": ".."
+		}
+	],
+	"settings": {}
+}
