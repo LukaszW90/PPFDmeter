@@ -25,7 +25,13 @@ void controller::init()
 
 void controller::periodic()
 {
+
+
+#if 1
+
+    OledDisplay::drawScreen(0,0,0,0,0);
 //  OledDisplay::drawVictrebel();
+#else
 
 // Aktualizacja współrzędnych
         posX += speedX;
@@ -46,4 +52,5 @@ void controller::periodic()
         // Wyrenderowanie klatki na podstawie aktualnych współrzędnych
         OledDisplay::drawVictrebelAt(posX, posY);
 
+#endif
 }
