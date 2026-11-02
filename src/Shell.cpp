@@ -22,6 +22,7 @@ extern "C"
 #include "BtSerial.hpp"
 #include "Shell.hpp"
 #include "I2c.hpp"
+#include "controller.hpp"
 
 namespace ShellCmd
 {
@@ -204,6 +205,7 @@ void Shell::Periodic()
 
 void ShellCmd::handle(const char* cmd)
 {
+int temp{};
 
     if (strcmp(cmd, "help") == 0)
     {
@@ -241,10 +243,9 @@ void ShellCmd::handle(const char* cmd)
         ShellIO::println("restarting...");
         esp_restart();
     }
-    else if (strcmp(cmd, "getlastframe") == 0)
+   else if(sscanf(cmd,"setscreensaver %d",&temp) == 1)
     {
-        ShellCmd::getLastFrame();
-
+        controller::setScreensaverEnabled(temp);    
     }
     else
     {

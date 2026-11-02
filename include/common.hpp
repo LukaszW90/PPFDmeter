@@ -11,6 +11,4 @@ namespace StdError
     constexpr int NOK = 0;
 }
 
-#if true
-    #define SENDER
-#endif
+
