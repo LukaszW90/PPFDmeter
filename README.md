@@ -39,5 +39,12 @@ Display::printNumber10x16RightAlign(
     int row,
     int column);
 
-
+struct Sprite
+{
+    const uint8_t* bitmap;
+  //  const uint8_t* mask;
+    uint8_t width;
+    uint8_t height;
+};
+drawSprite(...)
     
