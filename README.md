@@ -26,3 +26,18 @@ for(...)
     dstByte =
     (bgByte & ~maskByte)
     | (spriteByte & maskByte);
+
+-----------------------------------
+
+LUX:   99999
+PPFD:   9999
+RH:       58
+TMP:      24
+
+Display::printNumber10x16RightAlign(
+    int value,
+    int row,
+    int column);
+
+
+    
