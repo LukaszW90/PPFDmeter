@@ -5,7 +5,7 @@
 #include "controller.hpp"
 #include "OledDisplay.hpp"
 
-bool ScreenSaverEnabled = true;
+bool ScreenSaverEnabled = false;
 
 void controller::init()
 {
@@ -15,25 +15,30 @@ void controller::init()
 
 void controller::periodic()
 {
+    MeasurementData data{};   
+    data.lux = SENSOR_ERROR;
+    data.ppfd = SENSOR_ERROR;
+    data.humidity = SENSOR_ERROR;
+    data.temperature = SENSOR_ERROR;
 
 
-if (!ScreenSaverEnabled)
-{
+    if (!ScreenSaverEnabled)
+    {
 
-    OledDisplay::drawScreen(0,0,0,0,0);
-}
-else
-{
+        OledDisplay::drawScreen(data);
+    }
+    else
+    {
 #if 0
 
         // Wyrenderowanie klatki na podstawie aktualnych współrzędnych
         OledDisplay::drawVictrebelAt(posX, posY);
 #endif
-    OledDisplay::drawScreen(0,0,0,0,0);
-    OledDisplay::drawScreenSaver();
+        OledDisplay::drawScreen(data);
+        OledDisplay::drawScreenSaver();
     }
 
-    OledDisplay::Update();
+    OledDisplay::Refresh();
 
 }
 
