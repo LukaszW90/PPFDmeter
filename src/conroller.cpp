@@ -5,45 +5,44 @@
 #include "controller.hpp"
 #include "OledDisplay.hpp"
 
-
+bool ScreenSaverEnabled = false;
 
 void controller::init()
 {
 
 }
- // 2. Parametry startowe fizyki naszej "gry"
-    int posX = 32;       // Startowa pozycja X (środek ekranu)
-    int posY = 0;        // Startowa pozycja Y
-    int speedX = 2;      // Prędkość w poziomie (piksele na klatkę)
-    int speedY = 1;      // Prędkość w pionie
 
-    // Rozmiary obiektów do sprawdzania kolizji
-    const int displayWidth = 128;
-    const int displayHeight = 64;
-    const int spriteWidth = 64;
-    const int spriteHeight = 64;
 
 void controller::periodic()
 {
-//  OledDisplay::drawVictrebel();
+    MeasurementData data{};   
+    data.lux = SENSOR_ERROR;
+    data.ppfd = SENSOR_ERROR;
+    data.humidity = SENSOR_ERROR;
+    data.temperature = SENSOR_ERROR;
 
-// Aktualizacja współrzędnych
-        posX += speedX;
-        posY += speedY;
 
-        // KOLIZJA Z LEWĄ LUB PRAWĄ ŚCIANĄ
-        if (posX <= 0 || posX >= (displayWidth - spriteWidth)) {
-            speedX = -speedX; // Odwróć ruch w poziomie
-        }
+    if (!ScreenSaverEnabled)
+    {
 
-        // KOLIZJA Z GÓRNĄ LUB DOLNĄ ŚCIANĄ 
-        // (Wysokość ekranu to 64 i sprite to 64, więc w pionie na ekranie 128x64 
-        // ruch będzie minimalny lub zerowy, zależnie od ustawienia posY)
-        if (posY < 0 || posY > (displayHeight - spriteHeight)) {
-            speedY = -speedY; // Odwróć ruch w pionie
-        }
+        OledDisplay::drawScreen(data);
+    }
+    else
+    {
+#if 0
 
         // Wyrenderowanie klatki na podstawie aktualnych współrzędnych
         OledDisplay::drawVictrebelAt(posX, posY);
+#endif
+        OledDisplay::drawScreen(data);
+        OledDisplay::drawScreenSaver();
+    }
 
+    OledDisplay::Refresh();
+
+}
+
+void controller::setScreensaverEnabled(bool enabled)
+{
+    ScreenSaverEnabled = enabled;
 }

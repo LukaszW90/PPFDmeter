@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "PPFDmeter",
-    "project_version":    "b29e530-dirty",
+    "project_version":    "5572a87-dirty",
     "project_path":       "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter",
     "idf_path":           "/home/lukasz/.platformio/packages/framework-espidf",
     "build_dir":          "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3",
