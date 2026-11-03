@@ -16,8 +16,6 @@ extern "C"
 
 constexpr i2c_port_t I2C_MASTER_NUM = I2C_NUM_0;
 
-constexpr int OLED_ADDR = 0x3C;
-
 void I2C::init()
 {
     i2c_config_t conf = {};
@@ -79,3 +77,33 @@ esp_err_t I2C::write_bytes(uint8_t device_address, uint8_t reg_address, const ui
         i2c_cmd_link_delete(cmd);
         return ret;
     }
+
+
+/*-----------------------------------------------------------------------*/
+struct I2C::DeviceInfo
+{
+    uint8_t address;
+    const char* name;
+};
+
+constexpr I2C::DeviceInfo KnownDevices[] =
+{
+    { HwConfig::I2cAddr::Veml7700, "VEML7700" },
+    { HwConfig::I2cAddr::Oled, "SSD1306 (OLED)"  },
+    { HwConfig::I2cAddr::Sht40r, "SHT40"    },
+    { HwConfig::I2cAddr::Ds3231, "DS3231"   },
+    { HwConfig::I2cAddr::Ds3231Eeprom, "AT24C32 (EEPROM)"  }
+};
+
+const char* I2C::GetDeviceName(uint8_t address)
+{
+    for(const auto& dev :  I2C::KnownDevices)
+    {
+        if(dev.address == address)
+        {
+            return dev.name;
+        }
+    }
+
+    return "Unknown";
+}
