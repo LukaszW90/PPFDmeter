@@ -11,6 +11,14 @@ namespace StdError
     constexpr int NOK = 0;
 }
 
-#if true
-    #define SENDER
-#endif
+struct MeasurementData
+{
+    uint32_t lux;
+    uint32_t ppfd;
+
+    float temperature;
+    float humidity;
+
+    float dliSession;
+    float dliTotal;
+};
