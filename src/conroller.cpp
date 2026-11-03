@@ -5,7 +5,7 @@
 #include "controller.hpp"
 #include "OledDisplay.hpp"
 
-bool ScreenSaverEnabled = false;
+bool ScreenSaverEnabled = true;
 
 void controller::init()
 {

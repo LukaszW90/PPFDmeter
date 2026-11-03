@@ -366,13 +366,16 @@ void ShellCmd:: system()
 void ShellCmd::i2cScan()
 {
 
-    int devAddr[I2C::devicesNmb] = {0,0};
+    int devAddr[I2C::devicesNmb] = {};
     /*to do - correct I2C::scan API */
     int devCount = I2C::scan(&devAddr[0]);
-    if (devCount>0)
+
+    for(int i = 0;i<devCount;i++)
     {
-        ShellIO::printf("Device found at 0x%02X\r\n", devAddr[devCount-1]);
+  
+        ShellIO::printf("Device %s found at 0x%02X\r\n", I2C::GetDeviceName( devAddr[i]), devAddr[devCount-1]);
     }
+
      ShellIO::printf("Found %d known I2C device(s) \r\n", devCount );
 }
 

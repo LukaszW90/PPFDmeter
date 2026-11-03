@@ -96,7 +96,7 @@ void OledDisplay::init(void) {
 void OledDisplay::Refresh()
 {
     for (int page = 0; page < 8; page++) {
-        I2C::write_bytes(HwConfig::OledAddr, OLED_CONTROL_BYTE_DATA_STREAM, &oled_buffer[page * 128], 128);
+        I2C::write_bytes(HwConfig::I2cAddr::Oled, OLED_CONTROL_BYTE_DATA_STREAM, &oled_buffer[page * 128], 128);
     }
 }
 
@@ -215,7 +215,7 @@ memcpy(&oled_buffer[0], &poke_buffer[0], OledDisplay::DisplayArraySize);
 
 static void OledSendCmd(uint8_t cmd) 
 {
-    I2C::write_bytes(HwConfig::OledAddr, OLED_CONTROL_BYTE_CMD_STREAM, &cmd, 1);
+    I2C::write_bytes(HwConfig::I2cAddr::Oled, OLED_CONTROL_BYTE_CMD_STREAM, &cmd, 1);
 }
 // Funkcja mapująca piksel bezpośrednio na specyficzny układ pamięci stron SSD1306
 void OledDrawPixel(int x, int y, uint8_t color, uint8_t*buffer) 
