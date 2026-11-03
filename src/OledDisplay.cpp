@@ -19,89 +19,119 @@
 #define POKEMON_HEIGHT 56
 
 
-
+static void OledSendCmd(uint8_t cmd); 
 static void drawDigit(  const int row, const int column, const int digit);
 static void drawNumber10x16_RightAlign(  const int row, const int column_px, const int number);
 static void drawIco16x16(  const int row, const int column, const int icoIdx);
+void OledDrawPixel(int x, int y, uint8_t color, uint8_t*buffer);
 
-static uint8_t oled_buffer[OledDisplay::DisplaySize_px];
-static uint8_t poke_buffer[OledDisplay::DisplaySize_px];
-static uint8_t poke_buffer_mask[OledDisplay::DisplaySize_px];
+static uint8_t oled_buffer[OledDisplay::DisplayArraySize_px];
+static uint8_t poke_buffer[OledDisplay::DisplayArraySize_px];
+static uint8_t poke_buffer_mask[OledDisplay::DisplayArraySize_px];
 
 
-// Podział na 8 bezpiecznych paczek po 128 bajtów (ochrona przed przepełnieniem I2C)
-void oled_update(void) {
+void OledDisplay::init(void) {
+    vTaskDelay(pdMS_TO_TICKS(150));
+    OledSendCmd(0xAE); 
+    OledSendCmd(0x20); // Tryb adresowania pamięci
+    OledSendCmd(0x00); // 0x00 = Horizontal Addressing Mode
+    OledSendCmd(0xB0); 
+    OledSendCmd(0xC8); 
+    OledSendCmd(0x00); 
+    OledSendCmd(0x10); 
+    OledSendCmd(0x40); 
+    OledSendCmd(0x81); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xCF); 
+    OledSendCmd(0xA1); 
+    OledSendCmd(0xA6); 
+    OledSendCmd(0xA8); 
+    OledSendCmd(0x3F); 
+    OledSendCmd(0xA4); 
+    OledSendCmd(0xD3); 
+    OledSendCmd(0x00); 
+    OledSendCmd(0xD5); 
+    OledSendCmd(0x80);
+    OledSendCmd(0xD9); 
+    OledSendCmd(0xF1);
+    OledSendCmd(0xDA); 
+    OledSendCmd(0x12);
+    OledSendCmd(0xDB); 
+    OledSendCmd(0x40);
+    OledSendCmd(0x8D); 
+    OledSendCmd(0x14); 
+    OledSendCmd(0xAF); 
+
+    clearScreen(); 
+    Refresh();
+}
+
+void OledDisplay::Refresh()
+{
     for (int page = 0; page < 8; page++) {
         I2C::write_bytes(HwConfig::OledAddr, OLED_CONTROL_BYTE_DATA_STREAM, &oled_buffer[page * 128], 128);
     }
 }
 
-static void oled_send_cmd(uint8_t cmd) {
-    I2C::write_bytes(HwConfig::OledAddr, OLED_CONTROL_BYTE_CMD_STREAM, &cmd, 1);
-}
-
-void OledDisplay::init(void) {
-    vTaskDelay(pdMS_TO_TICKS(150));
-    oled_send_cmd(0xAE); 
-    oled_send_cmd(0x20); // Tryb adresowania pamięci
-    oled_send_cmd(0x00); // 0x00 = Horizontal Addressing Mode
-    oled_send_cmd(0xB0); 
-    oled_send_cmd(0xC8); 
-    oled_send_cmd(0x00); 
-    oled_send_cmd(0x10); 
-    oled_send_cmd(0x40); 
-    oled_send_cmd(0x81); 
-    oled_send_cmd(0xCF); 
-    oled_send_cmd(0xA1); 
-    oled_send_cmd(0xA6); 
-    oled_send_cmd(0xA8); 
-    oled_send_cmd(0x3F); 
-    oled_send_cmd(0xA4); 
-    oled_send_cmd(0xD3); 
-    oled_send_cmd(0x00); 
-    oled_send_cmd(0xD5); 
-    oled_send_cmd(0x80);
-    oled_send_cmd(0xD9); 
-    oled_send_cmd(0xF1);
-    oled_send_cmd(0xDA); 
-    oled_send_cmd(0x12);
-    oled_send_cmd(0xDB); 
-    oled_send_cmd(0x40);
-    oled_send_cmd(0x8D); 
-    oled_send_cmd(0x14); 
-    oled_send_cmd(0xAF); 
-
-    clearScreen(); 
-    oled_update();
-}
-
-
-
-// Funkcja mapująca piksel bezpośrednio na specyficzny układ pamięci stron SSD1306
-void oled_draw_pixel(int x, int y, uint8_t color, uint8_t*buffer) {
-    if (x < 0 || x >= 128 || y < 0 || y >= 64) return;
-    
-    // Kluczowe rzutowanie matematyczne: SSD1306 dzieli ekran pionowo na 8 stron
-    if (color) {
-        buffer[x + (y / 8) * 128] |= (1 << (y % 8));
-    } else {
-        buffer[x + (y / 8) * 128] &= ~(1 << (y % 8));
-    }
-}
-
-
 void OledDisplay::clearScreen(void) 
 {
     // Wypełniamy cały bufor 1024 bajtów zerami (czarny ekran)
-    
     clearBuffer();
-        // Natychmiast wysyłamy wyczyszczony stan przez I2C do kontrolera SSD1306
-    oled_update();
+    // Natychmiast wysyłamy wyczyszczony stan przez I2C do kontrolera SSD1306
+    Refresh();
 }
+
 void OledDisplay::clearBuffer(void) 
 {
     memset(oled_buffer, 0, sizeof(oled_buffer));
 
+}
+
+void OledDisplay::drawScreen(MeasurementData& data)
+{
+   clearBuffer();
+   memcpy(&oled_buffer[0], &background_bmp[0], OledDisplay::DisplayArraySize); 
+
+   drawNumber8x16_RightAlign(0, 80, data.lux );
+   drawNumber8x16_RightAlign(2, 80, data.ppfd );
+   drawNumber8x16_RightAlign(4, 80, data.temperature );
+   drawDigit(4,88,12);
+   drawDigit(4,96,13);
+
+   drawNumber8x16_RightAlign(6, 80, data.humidity );
+   drawDigit(6,88,10);
+   drawDigit(6,96,11);
+    drawIco16x16(0,128-16,0);
+    drawIco16x16(2,128-16,0);
+    drawIco16x16(4,128-16,0);
+    drawIco16x16(6,128-16,0);
 }
 
 // NOWA DYNAMICZNA FUNKCJA RYSUJĄCA SPRITE NA POZYCJI X, Y
@@ -118,54 +148,13 @@ void OledDisplay::drawVictrebelAt(int target_x, int target_y,const uint8_t* spri
 
             if (pixel) {
                 // Rysujemy piksel przesunięty o dynamiczną współrzędną target_x i target_y
-                oled_draw_pixel(target_x + x, target_y + y, 1,buffer);
+                OledDrawPixel(target_x + x, target_y + y, 1,buffer);
             }
         }
     }
 }
-#if 0
-/* KOMPLETNA I POPRAWNA FUNKCJA RYSUJĄCA */
-void OledDisplay::drawVictrebel()
-{
-    // 1. Czyszczenie bufora ekranu na czarno
-    memset(poke_buffer, 0, sizeof(poke_buffer)); 
 
-    // 2. Wyznaczenie punktu startowego, aby rysunek był idealnie wyśrodkowany
-    int start_x = (128 - POKEMON_WIDTH) / 2;  // X = 32
-    int start_y = (64 - POKEMON_HEIGHT) / 2;  // Y = 0
 
-    // 3. Dekodowanie bitów i rysowanie za pomocą oled_draw_pixel
-    for (int y = 0; y < POKEMON_HEIGHT; y++) {
-        for (int x = 0; x < POKEMON_WIDTH; x++) {
-            
-            // Indeks bajtu w tablicy liniowej (co 8 pikseli w poziomie to nowy bajt)
-            int byte_idx = (y * (POKEMON_WIDTH / 8)) + (x / 8);
-            
-            // Wyciągnięcie konkretnego bitu (od MSB do LSB)
-            int bit_idx = 7 - (x % 8);
-            uint8_t pixel = (victreebelSprite56x56[0][byte_idx] >> bit_idx) & 0x01;
-
-            // Jeśli bit ma wartość 1, rysujemy biały piksel z uwzględnieniem offsetu wyśrodkowania
-            if (pixel) {
-                oled_draw_pixel(start_x + x, start_y + y, 1,&buffer);
-            }
-        }
-    }
-
-    for (int i =0;i<128*8;i++)
-    {
-        oled_buffer[i] =(oled_buffer[i] & ~victreebelSprite56x56_mask[0][i]) | (poke_buffer[i] & victreebelSprite56x56_mask[0][i]);
-    }
-
-    // 4. Wysłanie poprawnie ułożonego bufora do kontrolera OLED
-    oled_update(); 
-}
-#endif
- // 2. Parametry startowe fizyki naszej "gry"
-    int posX = 32;       // Startowa pozycja X (środek ekranu)
-    int posY = 0;        // Startowa pozycja Y
-    int speedX = 2;      // Prędkość w poziomie (piksele na klatkę)
-    int speedY = 1;      // Prędkość w pionie
 
     // Rozmiary obiektów do sprawdzania kolizji
     const int displayWidth = 128;
@@ -175,19 +164,25 @@ void OledDisplay::drawVictrebel()
 
 void OledDisplay::drawScreenSaver()
 {
+ // 2. Parametry startowe fizyki naszej "gry"
+    static int posX = 32;       // Startowa pozycja X (środek ekranu)
+    static int posY = 0;        // Startowa pozycja Y
+    static int speedX = 2;      // Prędkość w poziomie (piksele na klatkę)
+    static int speedY = 1;      // Prędkość w pionie
+    
 // Aktualizacja współrzędnych
         posX += speedX;
         posY += speedY;
 
         // KOLIZJA Z LEWĄ LUB PRAWĄ ŚCIANĄ
-        if (posX <= 0 || posX >= (displayWidth - spriteWidth)) {
+        if (posX <= 0 || posX >= (DisplayWidth_px - spriteWidth)) {
             speedX = -speedX; // Odwróć ruch w poziomie
         }
 
         // KOLIZJA Z GÓRNĄ LUB DOLNĄ ŚCIANĄ 
         // (Wysokość ekranu to 64 i sprite to 64, więc w pionie na ekranie 128x64 
         // ruch będzie minimalny lub zerowy, zależnie od ustawienia posY)
-        if (posY < 0 || posY > (displayHeight - spriteHeight)) {
+        if (posY < 0 || posY > (DisplayHeight_px - spriteHeight)) {
             speedY = -speedY; // Odwróć ruch w pionie
         }
 
@@ -212,32 +207,27 @@ else
     //   oled_buffer[i] = (poke_buffer[i]);
     }
 
-memcpy(&oled_buffer[0], &poke_buffer[0], OledDisplay::DisplaySize_px); 
+memcpy(&oled_buffer[0], &poke_buffer[0], OledDisplay::DisplayArraySize); 
 
 }
 
-/***************************************************************************888 */
-void OledDisplay::drawScreen(const int lux, const int ppfd, const int temp, const int humid, const int battery)
+/*************************************************************************** */
+
+static void OledSendCmd(uint8_t cmd) 
 {
-   clearBuffer();
-   memcpy(&oled_buffer[0], &background_bmp[0], OledDisplay::DisplaySize_px); 
-
-   drawNumber10x16_RightAlign(0, 80, 12340 );
-   drawNumber10x16_RightAlign(2, 80, 56789 );
-   drawNumber10x16_RightAlign(4, 80, 11 );
-   drawDigit(4,88,12);
-   drawDigit(4,96,13);
-
-   drawNumber10x16_RightAlign(6, 80, 99 );
-   drawDigit(6,88,10);
-   drawDigit(6,96,11);
-    drawIco16x16(0,128-16,0);
-    drawIco16x16(2,128-16,0);
-    drawIco16x16(4,128-16,0);
-    drawIco16x16(6,128-16,0);
-
-
-
+    I2C::write_bytes(HwConfig::OledAddr, OLED_CONTROL_BYTE_CMD_STREAM, &cmd, 1);
+}
+// Funkcja mapująca piksel bezpośrednio na specyficzny układ pamięci stron SSD1306
+void OledDrawPixel(int x, int y, uint8_t color, uint8_t*buffer) 
+{
+    if (x < 0 || x >= 128 || y < 0 || y >= 64) return;
+    
+    // Kluczowe rzutowanie matematyczne: SSD1306 dzieli ekran pionowo na 8 stron
+    if (color) {
+        buffer[x + (y / 8) * 128] |= (1 << (y % 8));
+    } else {
+        buffer[x + (y / 8) * 128] &= ~(1 << (y % 8));
+    }
 }
 
 /* 128 rows, 8 column */
@@ -271,7 +261,7 @@ void drawIco16x16(  const int row, const int column, const int icoIdx)
        memcpy(&oled_buffer[bufferIndex], &icons16x16[icoIdx][16], 16); 
 }
 
-static void drawNumber10x16_RightAlign(  const int row, const int column_px, const int number)
+static void drawNumber8x16_RightAlign(  const int row, const int column_px, const int number)
 {
     constexpr int DIGIT_OFFSET_PX = 8;
     int digitsNmb = 1; /* number of digits to show - without leading zeros */
@@ -283,9 +273,8 @@ static void drawNumber10x16_RightAlign(  const int row, const int column_px, con
     digits[3] = (number / 1000) % 10; // 4
     digits[4] = (number / 10000) % 10;// 5
 
-    for(int i=5;i>0;i--)
-    {
-        
+    for(int i=4;i>0;i--)
+    {  
         if(digits[i]==0)
         {
             continue;
@@ -297,14 +286,8 @@ static void drawNumber10x16_RightAlign(  const int row, const int column_px, con
     {
         if(i==digitsNmb) return;
         drawDigit(row, column_px-DIGIT_OFFSET_PX*i, digits[i] );
-
     }
-
-
 }
 
 
-void OledDisplay::Update()
-{
-    oled_update(); 
-}
+
