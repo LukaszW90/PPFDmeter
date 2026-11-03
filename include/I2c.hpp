@@ -1,5 +1,7 @@
 #pragma once
 
+#include "HwConfig.hpp"
+
 namespace I2C
 {
     struct DeviceInfo

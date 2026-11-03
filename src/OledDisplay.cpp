@@ -22,7 +22,7 @@
 static void OledSendCmd(uint8_t cmd); 
 static void drawDigit(  const int row, const int column, const int digit);
 static void drawNumber8x16_RightAlign(  const int row, const int column_px, const int number);
-static void drawIco16x16(  const int row, const int column, const int icoIdx);
+static void drawIco16x16(  const int row, const int column, const uint8_t* ico);
 void OledDrawPixel(int x, int y, uint8_t color, uint8_t*buffer);
 
 static uint8_t oled_buffer[OledDisplay::DisplayArraySize];
@@ -114,7 +114,7 @@ void OledDisplay::clearBuffer(void)
 
 }
 
-void OledDisplay::drawScreen(MeasurementData& data)
+void OledDisplay::drawScreen(MeasurementData& data, ConfigData& config)
 {
    clearBuffer();
    memcpy(&oled_buffer[0], &background_bmp[0], OledDisplay::DisplayArraySize); 
@@ -128,10 +128,10 @@ void OledDisplay::drawScreen(MeasurementData& data)
    drawNumber8x16_RightAlign(6, 80, data.humidity );
    drawDigit(6,88,10);
    drawDigit(6,96,11);
-    drawIco16x16(0,128-16,0);
-    drawIco16x16(2,128-16,0);
-    drawIco16x16(4,128-16,0);
-    drawIco16x16(6,128-16,0);
+    drawIco16x16(0,128-16,&ico16x16_bmp::lightProfiles[static_cast<int>(config.Profile)][0]);
+    drawIco16x16(2,128-16,&icons16x16[0][0]);
+    drawIco16x16(4,128-16,&icons16x16[0][0]);
+    drawIco16x16(6,128-16,&icons16x16[0][0]);
 }
 
 // NOWA DYNAMICZNA FUNKCJA RYSUJĄCA SPRITE NA POZYCJI X, Y
@@ -247,18 +247,18 @@ void drawDigit(  const int row, const int column, const int digit)
 
 }
 
-void drawIco16x16(  const int row, const int column, const int icoIdx)
+void drawIco16x16(  const int row, const int column, const uint8_t* ico)
 {
        int bufferIndex = column + OledDisplay::DisplayWidth_px*row;
  //   if (digit>1) return;
 
-   uint8_t size = (column>(OledDisplay::DisplayWidth_px-Digit::width))?(OledDisplay::DisplayWidth_px-column):Digit::width; 
+ //  uint8_t size = (column>(OledDisplay::DisplayWidth_px-Digit::width))?(OledDisplay::DisplayWidth_px-column):Digit::width; 
   //  if ((bufferIndex+OledDisplay::DisplayWidth_px+size)<OledDisplay::DisplaySize_px)
-        memcpy(&oled_buffer[bufferIndex], &icons16x16[icoIdx][0], 16); 
+        memcpy(&oled_buffer[bufferIndex], ico, 16); 
     /* second row of digit*/
     bufferIndex+=OledDisplay::DisplayWidth_px;
    // if ((bufferIndex+size)<OledDisplay::DisplaySize_px)
-       memcpy(&oled_buffer[bufferIndex], &icons16x16[icoIdx][16], 16); 
+       memcpy(&oled_buffer[bufferIndex], ico+16, 16); 
 }
 
 static void drawNumber8x16_RightAlign(  const int row, const int column_px, const int number)

@@ -25,6 +25,7 @@ extern "C" {
 #include "BtSerial.hpp"
 #include "WifiManager.hpp"
 #include "NvsManager.hpp"
+#include "LightSensor.hpp"
 #include "controller.hpp"
 
 namespace TaskPeriod_ms
@@ -49,6 +50,7 @@ extern "C" void app_main() {
     Uart::init();
     I2C::init();
     OledDisplay::init();
+    LightSensor::init();
    /// Timer::init();
     NvsManager::initNvs(); 
 

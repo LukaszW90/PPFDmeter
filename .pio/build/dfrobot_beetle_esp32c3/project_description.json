@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "PPFDmeter",
-    "project_version":    "5572a87-dirty",
+    "project_version":    "e5959dc-dirty",
     "project_path":       "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter",
     "idf_path":           "/home/lukasz/.platformio/packages/framework-espidf",
     "build_dir":          "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3",
@@ -1480,7 +1480,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/esp-idf/src/libsrc.a",
-            "sources": [ "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/BtSerial.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/CMakeLists.txt", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/ESP32-CAM.code-workspace", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/HwInput.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/I2c.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/NvsManager.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/OledDisplay.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/Shell.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/Timer.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/Uart.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/WifiManager.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/conroller.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/main.cpp" ],
+            "sources": [ "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/BtSerial.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/CMakeLists.txt", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/ESP32-CAM.code-workspace", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/HwInput.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/I2c.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/LightSensor.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/NvsManager.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/OledDisplay.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/Shell.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/Timer.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/Uart.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/WifiManager.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/conroller.cpp", "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/src/main.cpp" ],
             "include_dirs": []
         },
         "tcp_transport": {
