@@ -32,7 +32,7 @@ namespace HwConfig
     /* I2C */
     constexpr gpio_num_t I2cSdaPin = GPIO_NUM_6;
     constexpr gpio_num_t I2cSclPin = GPIO_NUM_7;
-    constexpr int I2cFreq = 40000;
+    constexpr int I2cFreq = 100000;
 
     /* SPI */
     constexpr gpio_num_t SpiSckPin = GPIO_NUM_8;
@@ -43,6 +43,13 @@ namespace HwConfig
     constexpr gpio_num_t UartRxPin = GPIO_NUM_20;
     constexpr gpio_num_t UartTxPin = GPIO_NUM_21;
 
-    /* OLED */
-    constexpr uint8_t OledAddr = 0x3C;
+    /* I2C devicesAddr */
+    namespace I2cAddr
+    {
+        constexpr uint8_t Oled         = 0x3C;
+        constexpr uint8_t Veml7700     = 0x10;
+        constexpr uint8_t Sht40        = 0x44;
+        constexpr uint8_t Ds3231       = 0x68;
+        constexpr uint8_t Ds3231Eeprom = 0x57;
+    }
 }
