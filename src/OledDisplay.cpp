@@ -9,68 +9,26 @@
 #include "HwConfig.hpp"
 #include "I2c.hpp"
 #include "OledDisplay.hpp"
+#include "displayDatabase.hpp"
+
 
 #define OLED_CONTROL_BYTE_CMD_STREAM  0x00
 #define OLED_CONTROL_BYTE_DATA_STREAM 0x40
 
-#define POKEMON_WIDTH  64
-#define POKEMON_HEIGHT 64
-
-// ORYGINALNA, LINIOWA TABLICA (Wiersz po wierszu, od lewej do prawej)
-const uint8_t victreebel_sprite_linear[] = {
-	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x04, 0x00, 0x00, 0x00, 0x00, 
-	0x00, 0x00, 0x23, 0xfc, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbe, 0x07, 0x3e, 0x00, 0x00, 0x00, 
-	0x00, 0x00, 0xe1, 0xf9, 0xdf, 0xc0, 0x00, 0x00, 0x00, 0x03, 0x83, 0xfe, 0x67, 0xfc, 0x00, 0x00, 
-	0x00, 0x06, 0x07, 0xff, 0xbb, 0xff, 0x00, 0x00, 0x00, 0x1c, 0x1f, 0xff, 0xdf, 0xff, 0x80, 0x00, 
-	0x00, 0x1c, 0x1f, 0xff, 0xdf, 0xff, 0x80, 0x00, 0x00, 0x38, 0x1f, 0xff, 0xe5, 0xff, 0xc0, 0x00, 
-	0x00, 0xe0, 0x3f, 0xff, 0xf9, 0xff, 0xc0, 0x00, 0x00, 0x40, 0x3f, 0xff, 0xfd, 0xff, 0xe0, 0x00, 
-	0x00, 0xc0, 0x3f, 0xff, 0xfe, 0xff, 0xe0, 0x00, 0x00, 0x80, 0x3f, 0xff, 0xfe, 0xff, 0x00, 0x00, 
-	0x03, 0x80, 0x3f, 0xff, 0xfe, 0xf8, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xff, 0xe0, 0x00, 0x00, 
-	0x01, 0x00, 0x00, 0x00, 0xff, 0xe0, 0x00, 0x00, 0x01, 0x00, 0x0e, 0x00, 0x1f, 0xc0, 0x00, 0x00, 
-	0x07, 0x00, 0x0e, 0x00, 0x07, 0xa0, 0x00, 0x00, 0x02, 0x00, 0x07, 0x02, 0x03, 0x38, 0x00, 0x00, 
-	0x02, 0x00, 0x07, 0x06, 0x01, 0x48, 0x00, 0x00, 0x0e, 0x00, 0x03, 0x9e, 0x00, 0xc8, 0x00, 0x00, 
-	0x04, 0x00, 0x03, 0xde, 0x00, 0xc8, 0x00, 0x00, 0x04, 0x00, 0x01, 0xdc, 0x01, 0x98, 0x00, 0x00, 
-	0x04, 0x00, 0x01, 0xdc, 0x01, 0xb8, 0x00, 0x00, 0x04, 0x00, 0x04, 0xe0, 0x00, 0x60, 0x00, 0x00, 
-	0x04, 0x00, 0x04, 0x7f, 0x01, 0xe0, 0x00, 0x00, 0x04, 0x00, 0x06, 0x0f, 0xff, 0xc0, 0x00, 0x00, 
-	0x04, 0x00, 0x07, 0x23, 0xff, 0x80, 0x00, 0x00, 0x04, 0x00, 0x07, 0xb8, 0xfe, 0x00, 0x00, 0x00, 
-	0x06, 0x3e, 0x07, 0xdb, 0x1a, 0x00, 0x20, 0x00, 0x02, 0x7f, 0xe3, 0xe0, 0x60, 0x07, 0xe0, 0x00, 
-	0x02, 0x7f, 0xe3, 0xe0, 0xe0, 0x07, 0xe0, 0x00, 0x02, 0xff, 0x1c, 0xff, 0xfc, 0x3f, 0xfc, 0x00, 
-	0x01, 0xfc, 0xff, 0x7f, 0xfc, 0xf8, 0x1f, 0x40, 0x03, 0xfb, 0xff, 0x7f, 0xfd, 0x87, 0xe1, 0xc0, 
-	0x07, 0xe7, 0xff, 0xbf, 0xfd, 0x7f, 0xfe, 0x78, 0x07, 0xff, 0xff, 0xbf, 0xfe, 0xff, 0xff, 0xa0, 
-	0x1f, 0xbf, 0xfe, 0x7f, 0xfe, 0xff, 0xff, 0xf8, 0x1f, 0x7f, 0xf9, 0xff, 0xfe, 0xff, 0xff, 0xf8, 
-	0x1f, 0x7f, 0xf9, 0xff, 0xfe, 0xff, 0xff, 0xf8, 0x1f, 0x7f, 0xe7, 0xff, 0xff, 0x07, 0xe0, 0x3c, 
-	0x1e, 0xff, 0xc3, 0xff, 0xff, 0x00, 0x00, 0x04, 0x1e, 0xff, 0x83, 0xff, 0xff, 0x80, 0x00, 0x00, 
-	0x3e, 0xff, 0x03, 0xff, 0xff, 0x80, 0x00, 0x00, 0x3d, 0xfe, 0x01, 0xff, 0xff, 0x80, 0x40, 0x00, 
-	0x3d, 0xfc, 0x01, 0xff, 0xff, 0x81, 0x7e, 0x00, 0x3d, 0xfc, 0x00, 0xff, 0xff, 0x01, 0xfc, 0x00, 
-	0x3d, 0xfc, 0x00, 0xff, 0xff, 0x05, 0xfc, 0x00, 0x3d, 0xf8, 0x00, 0xff, 0xff, 0x07, 0xf8, 0x00, 
-	0x3f, 0xe0, 0x00, 0x7f, 0xfe, 0x1f, 0xe0, 0x00, 0x1f, 0xdc, 0x00, 0x3f, 0xfc, 0x3f, 0xf8, 0x00, 
-	0x1f, 0xc4, 0x00, 0x07, 0xe0, 0x3f, 0xc0, 0x00, 0x1f, 0x86, 0x00, 0x00, 0x00, 0x3f, 0xe0, 0x00, 
-	0x07, 0x83, 0x00, 0x00, 0x00, 0x7f, 0x80, 0x00, 0x07, 0x01, 0x80, 0x00, 0x00, 0x7f, 0x80, 0x00, 
-	0x07, 0x01, 0x80, 0x00, 0x00, 0x7f, 0xc0, 0x00, 0x07, 0x00, 0xc0, 0x00, 0x00, 0x7e, 0x00, 0x00, 
-	0x02, 0x00, 0x78, 0x00, 0x00, 0xe0, 0x00, 0x00, 0x02, 0x00, 0x1e, 0x20, 0x01, 0xc0, 0x00, 0x00, 
-	0x00, 0x00, 0x03, 0xe0, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3f, 0xe0, 0x00, 0x00, 0x00, 
-	0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-};
-
-// Prosta czcionka 8x8: cyfry 0-9, kropka, stopień, minus [12]
-const uint8_t font_8x8[][8] = {
-    {0x3c, 0x46, 0x4a, 0x52, 0x62, 0x3c, 0x00, 0x00}, // 0
-    {0x18, 0x1c, 0x18, 0x18, 0x18, 0x7e, 0x00, 0x00}, // 1
-    {0x3c, 0x42, 0x02, 0x3c, 0x40, 0x7e, 0x00, 0x00}, // 2
-    {0x3c, 0x42, 0x0c, 0x02, 0x42, 0x3c, 0x00, 0x00}, // 3
-    {0x08, 0x18, 0x28, 0x48, 0x7e, 0x08, 0x00, 0x00}, // 4
-    {0x7e, 0x40, 0x7c, 0x02, 0x42, 0x3c, 0x00, 0x00}, // 5
-    {0x3c, 0x40, 0x7c, 0x42, 0x42, 0x3c, 0x00, 0x00}, // 6
-    {0x7e, 0x02, 0x04, 0x08, 0x10, 0x10, 0x00, 0x00}, // 7
-    {0x3c, 0x42, 0x3c, 0x42, 0x42, 0x3c, 0x00, 0x00}, // 8
-    {0x3c, 0x42, 0x3e, 0x02, 0x04, 0x38, 0x00, 0x00}, // 9
-    {0x00, 0x00, 0x00, 0x00, 0x18, 0x18, 0x00, 0x00}, // . (kropka)
-    {0x1c, 0x22, 0x22, 0x1c, 0x00, 0x00, 0x00, 0x00}, // ° (stopień)
-    {0x00, 0x00, 0x3e, 0x00, 0x00, 0x00, 0x00, 0x00}  // - (minus)
-};
+#define POKEMON_WIDTH  56
+#define POKEMON_HEIGHT 56
 
 
-static uint8_t oled_buffer[1024];
+
+static void drawDigit(  const int row, const int column, const int digit);
+static void drawNumber10x16_RightAlign(  const int row, const int column_px, const int number);
+static void drawIco16x16(  const int row, const int column, const int icoIdx);
+
+static uint8_t oled_buffer[OledDisplay::DisplaySize_px];
+static uint8_t poke_buffer[OledDisplay::DisplaySize_px];
+static uint8_t poke_buffer_mask[OledDisplay::DisplaySize_px];
+
+
 // Podział na 8 bezpiecznych paczek po 128 bajtów (ochrona przed przepełnieniem I2C)
 void oled_update(void) {
     for (int page = 0; page < 8; page++) {
@@ -120,14 +78,14 @@ void OledDisplay::init(void) {
 
 
 // Funkcja mapująca piksel bezpośrednio na specyficzny układ pamięci stron SSD1306
-void oled_draw_pixel(int x, int y, uint8_t color) {
+void oled_draw_pixel(int x, int y, uint8_t color, uint8_t*buffer) {
     if (x < 0 || x >= 128 || y < 0 || y >= 64) return;
     
     // Kluczowe rzutowanie matematyczne: SSD1306 dzieli ekran pionowo na 8 stron
     if (color) {
-        oled_buffer[x + (y / 8) * 128] |= (1 << (y % 8));
+        buffer[x + (y / 8) * 128] |= (1 << (y % 8));
     } else {
-        oled_buffer[x + (y / 8) * 128] &= ~(1 << (y % 8));
+        buffer[x + (y / 8) * 128] &= ~(1 << (y % 8));
     }
 }
 
@@ -135,37 +93,42 @@ void oled_draw_pixel(int x, int y, uint8_t color) {
 void OledDisplay::clearScreen(void) 
 {
     // Wypełniamy cały bufor 1024 bajtów zerami (czarny ekran)
-    memset(oled_buffer, 0, sizeof(oled_buffer));
-    // Natychmiast wysyłamy wyczyszczony stan przez I2C do kontrolera SSD1306
+    
+    clearBuffer();
+        // Natychmiast wysyłamy wyczyszczony stan przez I2C do kontrolera SSD1306
     oled_update();
+}
+void OledDisplay::clearBuffer(void) 
+{
+    memset(oled_buffer, 0, sizeof(oled_buffer));
+
 }
 
 // NOWA DYNAMICZNA FUNKCJA RYSUJĄCA SPRITE NA POZYCJI X, Y
-void OledDisplay::drawVictrebelAt(int target_x, int target_y)
+void OledDisplay::drawVictrebelAt(int target_x, int target_y,const uint8_t* sprite, uint8_t *buffer)
 {
     // Czyścimy bufor pamięci, żeby usunąć ducha z poprzedniej klatki
-    memset(oled_buffer, 0, sizeof(oled_buffer)); 
+    memset(buffer, 0, sizeof(oled_buffer)); 
 
     for (int y = 0; y < POKEMON_HEIGHT; y++) {
         for (int x = 0; x < POKEMON_WIDTH; x++) {
             int byte_idx = (y * (POKEMON_WIDTH / 8)) + (x / 8);
             int bit_idx = 7 - (x % 8);
-            uint8_t pixel = (victreebel_sprite_linear[byte_idx] >> bit_idx) & 0x01;
+            uint8_t pixel = (sprite[byte_idx] >> bit_idx) & 0x01;
 
             if (pixel) {
                 // Rysujemy piksel przesunięty o dynamiczną współrzędną target_x i target_y
-                oled_draw_pixel(target_x + x, target_y + y, 1);
+                oled_draw_pixel(target_x + x, target_y + y, 1,buffer);
             }
         }
     }
-    oled_update(); 
 }
-
+#if 0
 /* KOMPLETNA I POPRAWNA FUNKCJA RYSUJĄCA */
 void OledDisplay::drawVictrebel()
 {
     // 1. Czyszczenie bufora ekranu na czarno
-    memset(oled_buffer, 0, sizeof(oled_buffer)); 
+    memset(poke_buffer, 0, sizeof(poke_buffer)); 
 
     // 2. Wyznaczenie punktu startowego, aby rysunek był idealnie wyśrodkowany
     int start_x = (128 - POKEMON_WIDTH) / 2;  // X = 32
@@ -180,59 +143,168 @@ void OledDisplay::drawVictrebel()
             
             // Wyciągnięcie konkretnego bitu (od MSB do LSB)
             int bit_idx = 7 - (x % 8);
-            uint8_t pixel = (victreebel_sprite_linear[byte_idx] >> bit_idx) & 0x01;
+            uint8_t pixel = (victreebelSprite56x56[0][byte_idx] >> bit_idx) & 0x01;
 
             // Jeśli bit ma wartość 1, rysujemy biały piksel z uwzględnieniem offsetu wyśrodkowania
             if (pixel) {
-                oled_draw_pixel(start_x + x, start_y + y, 1);
+                oled_draw_pixel(start_x + x, start_y + y, 1,&buffer);
             }
         }
+    }
+
+    for (int i =0;i<128*8;i++)
+    {
+        oled_buffer[i] =(oled_buffer[i] & ~victreebelSprite56x56_mask[0][i]) | (poke_buffer[i] & victreebelSprite56x56_mask[0][i]);
     }
 
     // 4. Wysłanie poprawnie ułożonego bufora do kontrolera OLED
     oled_update(); 
 }
+#endif
+ // 2. Parametry startowe fizyki naszej "gry"
+    int posX = 32;       // Startowa pozycja X (środek ekranu)
+    int posY = 0;        // Startowa pozycja Y
+    int speedX = 2;      // Prędkość w poziomie (piksele na klatkę)
+    int speedY = 1;      // Prędkość w pionie
 
-// Rysuje pojedynczy znak z naszej czcionki na pozycji X, Y
-void oled_draw_char(int x, int y, char c) {
-    int idx = 0;
-    if (c >= '0' && c <= '9') idx = c - '0';
-    else if (c == '.') idx = 10;
-    else if (c == 'c' || c == 'C') idx = 11; // użyjemy 'c' jako znaku stopnia °
-    else if (c == '-') idx = 12;
-    else return; // Znak nieobsługiwany
+    // Rozmiary obiektów do sprawdzania kolizji
+    const int displayWidth = 128;
+    const int displayHeight = 64;
+    const int spriteWidth = 56;
+    const int spriteHeight = 56;
 
-    for (int i = 0; i < 8; i++) {
-        uint8_t line = font_8x8[idx][i];
-        for (int j = 0; j < 8; j++) {
-            if (line & (0x80 >> j)) {
-                oled_draw_pixel(x + j, y + i, 1);
-            }
+void OledDisplay::drawScreenSaver()
+{
+// Aktualizacja współrzędnych
+        posX += speedX;
+        posY += speedY;
+
+        // KOLIZJA Z LEWĄ LUB PRAWĄ ŚCIANĄ
+        if (posX <= 0 || posX >= (displayWidth - spriteWidth)) {
+            speedX = -speedX; // Odwróć ruch w poziomie
         }
-    }
+
+        // KOLIZJA Z GÓRNĄ LUB DOLNĄ ŚCIANĄ 
+        // (Wysokość ekranu to 64 i sprite to 64, więc w pionie na ekranie 128x64 
+        // ruch będzie minimalny lub zerowy, zależnie od ustawienia posY)
+        if (posY < 0 || posY > (displayHeight - spriteHeight)) {
+            speedY = -speedY; // Odwróć ruch w pionie
+        }
+
+
+if (speedX<0)
+{
+    drawVictrebelAt(posX,posY, &victreebelSprite56x56[0][0],&poke_buffer[0]);
+    drawVictrebelAt(posX,posY, &victreebelSprite56x56_mask[0][0],&poke_buffer_mask[0]);
+}
+else
+{
+    drawVictrebelAt(posX,posY, &victreebelSprite56x56[1][0],&poke_buffer[0]);
+    drawVictrebelAt(posX,posY, &victreebelSprite56x56_mask[1][0],&poke_buffer_mask[0]);
 }
 
-// Wypisuje cały ciąg znaków na ekranie
-void OledDisplay::printData(int x, int y, const char* text) {
-    while (*text) {
-        oled_draw_char(x, y, *text);
-        x += 8; // Przesunięcie o 8 pikseli w prawo dla kolejnego znaku
-        text++;
+    for (int i =0;i<OledDisplay::DisplaySize_px;i++)
+    {
+        if(i%2)
+        oled_buffer[i] &= 0x55;
+        else oled_buffer[i]  &= (~0x55);
+     poke_buffer[i] = (oled_buffer[i] & ~poke_buffer_mask[i]) | (poke_buffer[i] & poke_buffer_mask[i]);
+    //   oled_buffer[i] = (poke_buffer[i]);
     }
+
+memcpy(&oled_buffer[0], &poke_buffer[0], OledDisplay::DisplaySize_px); 
+
 }
-/*Usage
- // 1. Czyszczenie bufora na czarno
-        memset(oled_buffer, 0, sizeof(oled_buffer)); 
 
-        // 2. Formatowanie zmiennych float na tekst
-        // "c" na końcu wywoła nasz zdefiniowany znaczek stopnia °
-        snprintf(msg_temp, sizeof(msg_temp), "TEMP: %.1fc", temperature);
-        snprintf(msg_hum, sizeof(msg_hum),  "HUMI: %.1f", humidity);
+/***************************************************************************888 */
+void OledDisplay::drawScreen(const int lux, const int ppfd, const int temp, const int humid, const int battery)
+{
+   clearBuffer();
+   memcpy(&oled_buffer[0], &background_bmp[0], OledDisplay::DisplaySize_px); 
 
-        // 3. Wypisanie tekstów w różnych linijkach ekranu
-        OledDisplay::printData(10, 16, msg_temp); // Pierwsza linia
-        OledDisplay::printData(10, 36, msg_hum);  // Druga linia
+   drawNumber10x16_RightAlign(0, 80, 12340 );
+   drawNumber10x16_RightAlign(2, 80, 56789 );
+   drawNumber10x16_RightAlign(4, 80, 11 );
+   drawDigit(4,88,12);
+   drawDigit(4,96,13);
 
-        // 4. Wysłanie gotowego obrazu na ekran OLED przez I2C
-        oled_update();
-*/
+   drawNumber10x16_RightAlign(6, 80, 99 );
+   drawDigit(6,88,10);
+   drawDigit(6,96,11);
+    drawIco16x16(0,128-16,0);
+    drawIco16x16(2,128-16,0);
+    drawIco16x16(4,128-16,0);
+    drawIco16x16(6,128-16,0);
+
+
+
+}
+
+/* 128 rows, 8 column */
+void drawDigit(  const int row, const int column, const int digit)
+{
+      int bufferIndex = column + OledDisplay::DisplayWidth_px*row;
+ //   if (digit>1) return;
+
+   uint8_t size = (column>(OledDisplay::DisplayWidth_px-Digit::width))?(OledDisplay::DisplayWidth_px-column):Digit::width; 
+  //  if ((bufferIndex+OledDisplay::DisplayWidth_px+size)<OledDisplay::DisplaySize_px)
+        memcpy(&oled_buffer[bufferIndex], &BmpDigits8x16[digit][0], size); 
+    /* second row of digit*/
+    bufferIndex+=OledDisplay::DisplayWidth_px;
+   // if ((bufferIndex+size)<OledDisplay::DisplaySize_px)
+       memcpy(&oled_buffer[bufferIndex], &BmpDigits8x16[digit][Digit::width], Digit::width); 
+
+
+}
+
+void drawIco16x16(  const int row, const int column, const int icoIdx)
+{
+       int bufferIndex = column + OledDisplay::DisplayWidth_px*row;
+ //   if (digit>1) return;
+
+   uint8_t size = (column>(OledDisplay::DisplayWidth_px-Digit::width))?(OledDisplay::DisplayWidth_px-column):Digit::width; 
+  //  if ((bufferIndex+OledDisplay::DisplayWidth_px+size)<OledDisplay::DisplaySize_px)
+        memcpy(&oled_buffer[bufferIndex], &icons16x16[icoIdx][0], 16); 
+    /* second row of digit*/
+    bufferIndex+=OledDisplay::DisplayWidth_px;
+   // if ((bufferIndex+size)<OledDisplay::DisplaySize_px)
+       memcpy(&oled_buffer[bufferIndex], &icons16x16[icoIdx][16], 16); 
+}
+
+static void drawNumber10x16_RightAlign(  const int row, const int column_px, const int number)
+{
+    constexpr int DIGIT_OFFSET_PX = 8;
+    int digitsNmb = 1; /* number of digits to show - without leading zeros */
+
+    int digits[5]{};
+    digits[0] = number % 10;          // 1
+    digits[1] = (number / 10) % 10;   // 2
+    digits[2] = (number / 100) % 10;  // 3
+    digits[3] = (number / 1000) % 10; // 4
+    digits[4] = (number / 10000) % 10;// 5
+
+    for(int i=5;i>0;i--)
+    {
+        
+        if(digits[i]==0)
+        {
+            continue;
+        }
+        digitsNmb++;
+    }
+
+    for (int i=00;i<5;i++)
+    {
+        if(i==digitsNmb) return;
+        drawDigit(row, column_px-DIGIT_OFFSET_PX*i, digits[i] );
+
+    }
+
+
+}
+
+
+void OledDisplay::Update()
+{
+    oled_update(); 
+}
