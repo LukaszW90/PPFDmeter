@@ -22,3 +22,5 @@ struct MeasurementData
     float dliSession;
     float dliTotal;
 };
+
+constexpr int SENSOR_ERROR = -1;
