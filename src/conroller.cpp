@@ -26,19 +26,12 @@ ConfigData config;
 
     LightSensor::update();
     data.lux = LightSensor::getLux();
-    if (!ScreenSaverEnabled)
-    {
+    data.ppfd = LightSensor::getPpfd();
 
-        OledDisplay::drawScreen(data,config);
-    }
-    else
-    {
-#if 0
+    OledDisplay::drawScreen(data,config);
 
-        // Wyrenderowanie klatki na podstawie aktualnych współrzędnych
-        OledDisplay::drawVictrebelAt(posX, posY);
-#endif
-        OledDisplay::drawScreen(data,config);
+    if (ScreenSaverEnabled)
+    {
         OledDisplay::drawScreenSaver();
     }
 
