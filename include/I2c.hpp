@@ -13,7 +13,7 @@ namespace I2C
     {
         { HwConfig::I2cAddr::Veml7700, "VEML7700" },
         { HwConfig::I2cAddr::Oled, "SSD1306 (OLED)"  },
-        { HwConfig::I2cAddr::Sht40, "SHT40"    },
+        { HwConfig::I2cAddr::Sht30, "SHT30"    },
         { HwConfig::I2cAddr::Ds3231, "DS3231"   },
         { HwConfig::I2cAddr::Ds3231Eeprom, "AT24C32 (EEPROM)"  }
     };

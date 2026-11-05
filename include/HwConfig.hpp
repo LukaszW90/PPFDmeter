@@ -48,7 +48,7 @@ namespace HwConfig
     {
         constexpr uint8_t Oled         = 0x3C;
         constexpr uint8_t Veml7700     = 0x10;
-        constexpr uint8_t Sht40        = 0x44;
+        constexpr uint8_t Sht30        = 0x44;
         constexpr uint8_t Ds3231       = 0x68;
         constexpr uint8_t Ds3231Eeprom = 0x57;
     }

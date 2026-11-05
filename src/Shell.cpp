@@ -323,10 +323,10 @@ void ShellCmd::printConfig()
 
     ShellIO::printf("Lux  : %d \n\r",lux);
     ShellIO::printf("PPFD : %d \n\r",ppfd);
-    float rawTemp = RhTempSensor::getRawTemp();
-    float rawRh = RhTempSensor::getRawRh();
-    ShellIO::printf ("Temperature Raw :    %f\n\r",rawTemp);
-    ShellIO::printf ("RH Sensor Raw   :    %f\n\r",rawRh);
+    float Temp = RhTempSensor::getTemp();
+    float Rh = RhTempSensor::getRh();
+    ShellIO::printf ("Temperature Raw :    %f\n\r",Temp);
+    ShellIO::printf ("RH Sensor Raw   :    %f\n\r",Rh);
 
 
 }
@@ -396,8 +396,8 @@ void ShellCmd::showHwio()
 
     ShellIO::printf ("light Sensor Raw:    %d\n\r",lightSensorRaw);
 
-    uint16_t rawTemp = RhTempSensor::getRawTemp();
-    uint16_t rawRh = RhTempSensor::getRawRh();
+    uint16_t rawTemp = RhTempSensor::getTemp();
+    uint16_t rawRh = RhTempSensor::getRh();
     ShellIO::printf ("Temperature Raw :    %d\n\r",rawTemp);
     ShellIO::printf ("RH Sensor Raw   :    %d\n\r",rawRh);
 

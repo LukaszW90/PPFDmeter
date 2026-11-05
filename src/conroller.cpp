@@ -31,7 +31,7 @@ ConfigData config;
     data.lux = LightSensor::getLux();
     data.ppfd = LightSensor::getPpfd();
     data.temperature = static_cast<uint32_t> (RhTempSensor::getTemp());
-    data.humidity = static_cast<uint32_t> (RhTempSensor::getTemp());
+    data.humidity = static_cast<uint32_t> (RhTempSensor::getRh());
 
 
     OledDisplay::drawScreen(data,config);
