@@ -100,8 +100,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-OKwq6X"
-      binary: "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-OKwq6X"
+      source: "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-m4l1dj"
+      binary: "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-m4l1dj"
     cmakeVariables:
       CMAKE_C_FLAGS: "-march=rv32imc_zicsr_zifencei "
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -111,10 +111,10 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-OKwq6X'
+        Change Dir: '/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-m4l1dj'
         
-        Run Build Command(s): /home/lukasz/.platformio/packages/tool-ninja/ninja -v cmTC_36fbd
-        [1/2] /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc   -march=rv32imc_zicsr_zifencei     -v -o CMakeFiles/cmTC_36fbd.dir/CMakeCCompilerABI.c.obj -c /home/lukasz/.platformio/packages/tool-cmake/share/cmake-3.30/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /home/lukasz/.platformio/packages/tool-ninja/ninja -v cmTC_b1d8a
+        [1/2] /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc   -march=rv32imc_zicsr_zifencei     -v -o CMakeFiles/cmTC_b1d8a.dir/CMakeCCompilerABI.c.obj -c /home/lukasz/.platformio/packages/tool-cmake/share/cmake-3.30/Modules/CMakeCCompilerABI.c
         Using built-in specs.
         COLLECT_GCC=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc
         Target: riscv32-esp-elf
@@ -122,8 +122,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 14.2.0 (crosstool-NG esp-14.2.0_20241119) 
-        COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_36fbd.dir/CMakeCCompilerABI.c.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_36fbd.dir/'
-         /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/cc1 -quiet -v -imultilib rv32imc_zicsr_zifencei/ilp32 -iprefix /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/ -isysroot /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf /home/lukasz/.platformio/packages/tool-cmake/share/cmake-3.30/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_36fbd.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=rv32imc_zicsr_zifencei -mabi=ilp32 -misa-spec=20191213 -march=rv32imc_zicsr_zifencei -version -o /tmp/cctF9snM.s
+        COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_b1d8a.dir/CMakeCCompilerABI.c.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_b1d8a.dir/'
+         /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/cc1 -quiet -v -imultilib rv32imc_zicsr_zifencei/ilp32 -iprefix /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/ -isysroot /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf /home/lukasz/.platformio/packages/tool-cmake/share/cmake-3.30/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_b1d8a.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=rv32imc_zicsr_zifencei -mabi=ilp32 -misa-spec=20191213 -march=rv32imc_zicsr_zifencei -version -o /tmp/ccZvlr4k.s
         GNU C17 (crosstool-NG esp-14.2.0_20241119) version 14.2.0 (riscv32-esp-elf)
         	compiled by GNU C version 4.9.2, GMP version 6.2.1, MPFR version 4.2.1, MPC version 1.2.1, isl version isl-0.26-GMP
         
@@ -140,13 +140,13 @@ events:
          /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/include
         End of search list.
         Compiler executable checksum: 2abae7216a6a1e12430968a738fec0e0
-        COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_36fbd.dir/CMakeCCompilerABI.c.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_36fbd.dir/'
-         /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/as -v --traditional-format -march=rv32imc_zicsr_zifencei -march=rv32imc_zicsr_zifencei -mabi=ilp32 -misa-spec=20191213 -o CMakeFiles/cmTC_36fbd.dir/CMakeCCompilerABI.c.obj /tmp/cctF9snM.s
+        COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_b1d8a.dir/CMakeCCompilerABI.c.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_b1d8a.dir/'
+         /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/as -v --traditional-format -march=rv32imc_zicsr_zifencei -march=rv32imc_zicsr_zifencei -mabi=ilp32 -misa-spec=20191213 -o CMakeFiles/cmTC_b1d8a.dir/CMakeCCompilerABI.c.obj /tmp/ccZvlr4k.s
         GNU assembler version 2.43.1 (riscv32-esp-elf) using BFD version (crosstool-NG esp-14.2.0_20241119) 2.43.1
         COMPILER_PATH=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/
         LIBRARY_PATH=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/
-        COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_36fbd.dir/CMakeCCompilerABI.c.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_36fbd.dir/CMakeCCompilerABI.c.'
-        [2/2] : && /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc -march=rv32imc_zicsr_zifencei -nostartfiles -march=rv32imc_zicsr_zifencei  -v CMakeFiles/cmTC_36fbd.dir/CMakeCCompilerABI.c.obj -o cmTC_36fbd   && :
+        COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_b1d8a.dir/CMakeCCompilerABI.c.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_b1d8a.dir/CMakeCCompilerABI.c.'
+        [2/2] : && /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc -march=rv32imc_zicsr_zifencei -nostartfiles -march=rv32imc_zicsr_zifencei  -v CMakeFiles/cmTC_b1d8a.dir/CMakeCCompilerABI.c.obj -o cmTC_b1d8a   && :
         Using built-in specs.
         COLLECT_GCC=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc
         COLLECT_LTO_WRAPPER=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper
@@ -157,10 +157,10 @@ events:
         gcc version 14.2.0 (crosstool-NG esp-14.2.0_20241119) 
         COMPILER_PATH=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/
         LIBRARY_PATH=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/
-        COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imc_zicsr_zifencei' '-v' '-o' 'cmTC_36fbd' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'cmTC_36fbd.'
-         /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2 -plugin /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.so -plugin-opt=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccmNyl18.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf -melf32lriscv -X -o cmTC_36fbd -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib CMakeFiles/cmTC_36fbd.dir/CMakeCCompilerABI.c.obj -lgcc -lc -lnosys -lc -lgcc
+        COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imc_zicsr_zifencei' '-v' '-o' 'cmTC_b1d8a' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'cmTC_b1d8a.'
+         /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2 -plugin /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.so -plugin-opt=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccOJYk6y.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf -melf32lriscv -X -o cmTC_b1d8a -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib CMakeFiles/cmTC_b1d8a.dir/CMakeCCompilerABI.c.obj -lgcc -lc -lnosys -lc -lgcc
         /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld: warning: cannot find entry symbol _start; defaulting to 00010094
-        COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imc_zicsr_zifencei' '-v' '-o' 'cmTC_36fbd' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'cmTC_36fbd.'
+        COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imc_zicsr_zifencei' '-v' '-o' 'cmTC_b1d8a' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'cmTC_b1d8a.'
         
       exitCode: 0
   -
@@ -195,10 +195,10 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
-        ignore line: [Change Dir: '/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-OKwq6X']
+        ignore line: [Change Dir: '/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-m4l1dj']
         ignore line: []
-        ignore line: [Run Build Command(s): /home/lukasz/.platformio/packages/tool-ninja/ninja -v cmTC_36fbd]
-        ignore line: [[1/2] /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc   -march=rv32imc_zicsr_zifencei     -v -o CMakeFiles/cmTC_36fbd.dir/CMakeCCompilerABI.c.obj -c /home/lukasz/.platformio/packages/tool-cmake/share/cmake-3.30/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /home/lukasz/.platformio/packages/tool-ninja/ninja -v cmTC_b1d8a]
+        ignore line: [[1/2] /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc   -march=rv32imc_zicsr_zifencei     -v -o CMakeFiles/cmTC_b1d8a.dir/CMakeCCompilerABI.c.obj -c /home/lukasz/.platformio/packages/tool-cmake/share/cmake-3.30/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc]
         ignore line: [Target: riscv32-esp-elf]
@@ -206,8 +206,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 14.2.0 (crosstool-NG esp-14.2.0_20241119) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_36fbd.dir/CMakeCCompilerABI.c.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_36fbd.dir/']
-        ignore line: [ /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/cc1 -quiet -v -imultilib rv32imc_zicsr_zifencei/ilp32 -iprefix /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/ -isysroot /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf /home/lukasz/.platformio/packages/tool-cmake/share/cmake-3.30/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_36fbd.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=rv32imc_zicsr_zifencei -mabi=ilp32 -misa-spec=20191213 -march=rv32imc_zicsr_zifencei -version -o /tmp/cctF9snM.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_b1d8a.dir/CMakeCCompilerABI.c.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_b1d8a.dir/']
+        ignore line: [ /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/cc1 -quiet -v -imultilib rv32imc_zicsr_zifencei/ilp32 -iprefix /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/ -isysroot /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf /home/lukasz/.platformio/packages/tool-cmake/share/cmake-3.30/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_b1d8a.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=rv32imc_zicsr_zifencei -mabi=ilp32 -misa-spec=20191213 -march=rv32imc_zicsr_zifencei -version -o /tmp/ccZvlr4k.s]
         ignore line: [GNU C17 (crosstool-NG esp-14.2.0_20241119) version 14.2.0 (riscv32-esp-elf)]
         ignore line: [	compiled by GNU C version 4.9.2  GMP version 6.2.1  MPFR version 4.2.1  MPC version 1.2.1  isl version isl-0.26-GMP]
         ignore line: []
@@ -224,13 +224,13 @@ events:
         ignore line: [ /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: 2abae7216a6a1e12430968a738fec0e0]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_36fbd.dir/CMakeCCompilerABI.c.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_36fbd.dir/']
-        ignore line: [ /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/as -v --traditional-format -march=rv32imc_zicsr_zifencei -march=rv32imc_zicsr_zifencei -mabi=ilp32 -misa-spec=20191213 -o CMakeFiles/cmTC_36fbd.dir/CMakeCCompilerABI.c.obj /tmp/cctF9snM.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_b1d8a.dir/CMakeCCompilerABI.c.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_b1d8a.dir/']
+        ignore line: [ /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/as -v --traditional-format -march=rv32imc_zicsr_zifencei -march=rv32imc_zicsr_zifencei -mabi=ilp32 -misa-spec=20191213 -o CMakeFiles/cmTC_b1d8a.dir/CMakeCCompilerABI.c.obj /tmp/ccZvlr4k.s]
         ignore line: [GNU assembler version 2.43.1 (riscv32-esp-elf) using BFD version (crosstool-NG esp-14.2.0_20241119) 2.43.1]
         ignore line: [COMPILER_PATH=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/]
         ignore line: [LIBRARY_PATH=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_36fbd.dir/CMakeCCompilerABI.c.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_36fbd.dir/CMakeCCompilerABI.c.']
-        ignore line: [[2/2] : && /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc -march=rv32imc_zicsr_zifencei -nostartfiles -march=rv32imc_zicsr_zifencei  -v CMakeFiles/cmTC_36fbd.dir/CMakeCCompilerABI.c.obj -o cmTC_36fbd   && :]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_b1d8a.dir/CMakeCCompilerABI.c.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_b1d8a.dir/CMakeCCompilerABI.c.']
+        ignore line: [[2/2] : && /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc -march=rv32imc_zicsr_zifencei -nostartfiles -march=rv32imc_zicsr_zifencei  -v CMakeFiles/cmTC_b1d8a.dir/CMakeCCompilerABI.c.obj -o cmTC_b1d8a   && :]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc]
         ignore line: [COLLECT_LTO_WRAPPER=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper]
@@ -241,13 +241,13 @@ events:
         ignore line: [gcc version 14.2.0 (crosstool-NG esp-14.2.0_20241119) ]
         ignore line: [COMPILER_PATH=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/]
         ignore line: [LIBRARY_PATH=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imc_zicsr_zifencei' '-v' '-o' 'cmTC_36fbd' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'cmTC_36fbd.']
-        link line: [ /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2 -plugin /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.so -plugin-opt=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccmNyl18.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf -melf32lriscv -X -o cmTC_36fbd -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib CMakeFiles/cmTC_36fbd.dir/CMakeCCompilerABI.c.obj -lgcc -lc -lnosys -lc -lgcc]
+        ignore line: [COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imc_zicsr_zifencei' '-v' '-o' 'cmTC_b1d8a' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'cmTC_b1d8a.']
+        link line: [ /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2 -plugin /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.so -plugin-opt=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccOJYk6y.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf -melf32lriscv -X -o cmTC_b1d8a -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib CMakeFiles/cmTC_b1d8a.dir/CMakeCCompilerABI.c.obj -lgcc -lc -lnosys -lc -lgcc]
           arg [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccmNyl18.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccOJYk6y.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
           arg [-plugin-opt=-pass-through=-lnosys] ==> ignore
@@ -257,7 +257,7 @@ events:
           arg [-melf32lriscv] ==> ignore
           arg [-X] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_36fbd] ==> ignore
+          arg [cmTC_b1d8a] ==> ignore
           arg [-L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32] ==> dir [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32]
           arg [-L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32] ==> dir [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32]
           arg [-L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32] ==> dir [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32]
@@ -265,7 +265,7 @@ events:
           arg [-L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc] ==> dir [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc]
           arg [-L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib] ==> dir [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib]
           arg [-L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib] ==> dir [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib]
-          arg [CMakeFiles/cmTC_36fbd.dir/CMakeCCompilerABI.c.obj] ==> ignore
+          arg [CMakeFiles/cmTC_b1d8a.dir/CMakeCCompilerABI.c.obj] ==> ignore
           arg [-lgcc] ==> lib [gcc]
           arg [-lc] ==> lib [c]
           arg [-lnosys] ==> lib [nosys]
@@ -273,7 +273,7 @@ events:
           arg [-lgcc] ==> lib [gcc]
         ignore line: [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld: warning: cannot find entry symbol _start]
         ignore line: [ defaulting to 00010094]
-        ignore line: [COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imc_zicsr_zifencei' '-v' '-o' 'cmTC_36fbd' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'cmTC_36fbd.']
+        ignore line: [COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imc_zicsr_zifencei' '-v' '-o' 'cmTC_b1d8a' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'cmTC_b1d8a.']
         ignore line: []
         ignore line: []
         collapse library dir [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32] ==> [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32]
@@ -299,8 +299,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-G86gX0"
-      binary: "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-G86gX0"
+      source: "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-GRlRlP"
+      binary: "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-GRlRlP"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-march=rv32imc_zicsr_zifencei "
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -311,10 +311,10 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-G86gX0'
+        Change Dir: '/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-GRlRlP'
         
-        Run Build Command(s): /home/lukasz/.platformio/packages/tool-ninja/ninja -v cmTC_f59ce
-        [1/2] /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-g++   -march=rv32imc_zicsr_zifencei     -v -o CMakeFiles/cmTC_f59ce.dir/CMakeCXXCompilerABI.cpp.obj -c /home/lukasz/.platformio/packages/tool-cmake/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /home/lukasz/.platformio/packages/tool-ninja/ninja -v cmTC_7f957
+        [1/2] /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-g++   -march=rv32imc_zicsr_zifencei     -v -o CMakeFiles/cmTC_7f957.dir/CMakeCXXCompilerABI.cpp.obj -c /home/lukasz/.platformio/packages/tool-cmake/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp
         Using built-in specs.
         COLLECT_GCC=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-g++
         Target: riscv32-esp-elf
@@ -322,8 +322,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 14.2.0 (crosstool-NG esp-14.2.0_20241119) 
-        COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_f59ce.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_f59ce.dir/'
-         /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/cc1plus -quiet -v -imultilib rv32imc_zicsr_zifencei/ilp32 -iprefix /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/ -isysroot /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf /home/lukasz/.platformio/packages/tool-cmake/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_f59ce.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -march=rv32imc_zicsr_zifencei -mabi=ilp32 -misa-spec=20191213 -march=rv32imc_zicsr_zifencei -version -o /tmp/ccCJVFdl.s
+        COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_7f957.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_7f957.dir/'
+         /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/cc1plus -quiet -v -imultilib rv32imc_zicsr_zifencei/ilp32 -iprefix /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/ -isysroot /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf /home/lukasz/.platformio/packages/tool-cmake/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_7f957.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -march=rv32imc_zicsr_zifencei -mabi=ilp32 -misa-spec=20191213 -march=rv32imc_zicsr_zifencei -version -o /tmp/ccIJFwZB.s
         GNU C++17 (crosstool-NG esp-14.2.0_20241119) version 14.2.0 (riscv32-esp-elf)
         	compiled by GNU C version 4.9.2, GMP version 6.2.1, MPFR version 4.2.1, MPC version 1.2.1, isl version isl-0.26-GMP
         
@@ -346,13 +346,13 @@ events:
          /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/include
         End of search list.
         Compiler executable checksum: c7cd21a23c5c74d612ca7681e3115c94
-        COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_f59ce.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_f59ce.dir/'
-         /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/as -v --traditional-format -march=rv32imc_zicsr_zifencei -march=rv32imc_zicsr_zifencei -mabi=ilp32 -misa-spec=20191213 -o CMakeFiles/cmTC_f59ce.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccCJVFdl.s
+        COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_7f957.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_7f957.dir/'
+         /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/as -v --traditional-format -march=rv32imc_zicsr_zifencei -march=rv32imc_zicsr_zifencei -mabi=ilp32 -misa-spec=20191213 -o CMakeFiles/cmTC_7f957.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccIJFwZB.s
         GNU assembler version 2.43.1 (riscv32-esp-elf) using BFD version (crosstool-NG esp-14.2.0_20241119) 2.43.1
         COMPILER_PATH=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/
         LIBRARY_PATH=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/
-        COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_f59ce.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_f59ce.dir/CMakeCXXCompilerABI.cpp.'
-        [2/2] : && /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-g++ -march=rv32imc_zicsr_zifencei -nostartfiles -march=rv32imc_zicsr_zifencei  -v CMakeFiles/cmTC_f59ce.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_f59ce   && :
+        COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_7f957.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_7f957.dir/CMakeCXXCompilerABI.cpp.'
+        [2/2] : && /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-g++ -march=rv32imc_zicsr_zifencei -nostartfiles -march=rv32imc_zicsr_zifencei  -v CMakeFiles/cmTC_7f957.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_7f957   && :
         Using built-in specs.
         COLLECT_GCC=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-g++
         COLLECT_LTO_WRAPPER=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper
@@ -363,10 +363,10 @@ events:
         gcc version 14.2.0 (crosstool-NG esp-14.2.0_20241119) 
         COMPILER_PATH=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/
         LIBRARY_PATH=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/
-        COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imc_zicsr_zifencei' '-v' '-o' 'cmTC_f59ce' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'cmTC_f59ce.'
-         /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2 -plugin /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.so -plugin-opt=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccYnMgah.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf -melf32lriscv -X -o cmTC_f59ce -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib CMakeFiles/cmTC_f59ce.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm -lgcc -lc -lnosys -lc -lgcc
+        COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imc_zicsr_zifencei' '-v' '-o' 'cmTC_7f957' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'cmTC_7f957.'
+         /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2 -plugin /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.so -plugin-opt=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cc0ZwJnR.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf -melf32lriscv -X -o cmTC_7f957 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib CMakeFiles/cmTC_7f957.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm -lgcc -lc -lnosys -lc -lgcc
         /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld: warning: cannot find entry symbol _start; defaulting to 00010094
-        COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imc_zicsr_zifencei' '-v' '-o' 'cmTC_f59ce' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'cmTC_f59ce.'
+        COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imc_zicsr_zifencei' '-v' '-o' 'cmTC_7f957' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'cmTC_7f957.'
         
       exitCode: 0
   -
@@ -407,10 +407,10 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
-        ignore line: [Change Dir: '/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-G86gX0']
+        ignore line: [Change Dir: '/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-GRlRlP']
         ignore line: []
-        ignore line: [Run Build Command(s): /home/lukasz/.platformio/packages/tool-ninja/ninja -v cmTC_f59ce]
-        ignore line: [[1/2] /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-g++   -march=rv32imc_zicsr_zifencei     -v -o CMakeFiles/cmTC_f59ce.dir/CMakeCXXCompilerABI.cpp.obj -c /home/lukasz/.platformio/packages/tool-cmake/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /home/lukasz/.platformio/packages/tool-ninja/ninja -v cmTC_7f957]
+        ignore line: [[1/2] /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-g++   -march=rv32imc_zicsr_zifencei     -v -o CMakeFiles/cmTC_7f957.dir/CMakeCXXCompilerABI.cpp.obj -c /home/lukasz/.platformio/packages/tool-cmake/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-g++]
         ignore line: [Target: riscv32-esp-elf]
@@ -418,8 +418,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 14.2.0 (crosstool-NG esp-14.2.0_20241119) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_f59ce.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_f59ce.dir/']
-        ignore line: [ /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/cc1plus -quiet -v -imultilib rv32imc_zicsr_zifencei/ilp32 -iprefix /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/ -isysroot /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf /home/lukasz/.platformio/packages/tool-cmake/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_f59ce.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -march=rv32imc_zicsr_zifencei -mabi=ilp32 -misa-spec=20191213 -march=rv32imc_zicsr_zifencei -version -o /tmp/ccCJVFdl.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_7f957.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_7f957.dir/']
+        ignore line: [ /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/cc1plus -quiet -v -imultilib rv32imc_zicsr_zifencei/ilp32 -iprefix /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/ -isysroot /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf /home/lukasz/.platformio/packages/tool-cmake/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_7f957.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -march=rv32imc_zicsr_zifencei -mabi=ilp32 -misa-spec=20191213 -march=rv32imc_zicsr_zifencei -version -o /tmp/ccIJFwZB.s]
         ignore line: [GNU C++17 (crosstool-NG esp-14.2.0_20241119) version 14.2.0 (riscv32-esp-elf)]
         ignore line: [	compiled by GNU C version 4.9.2  GMP version 6.2.1  MPFR version 4.2.1  MPC version 1.2.1  isl version isl-0.26-GMP]
         ignore line: []
@@ -442,13 +442,13 @@ events:
         ignore line: [ /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: c7cd21a23c5c74d612ca7681e3115c94]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_f59ce.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_f59ce.dir/']
-        ignore line: [ /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/as -v --traditional-format -march=rv32imc_zicsr_zifencei -march=rv32imc_zicsr_zifencei -mabi=ilp32 -misa-spec=20191213 -o CMakeFiles/cmTC_f59ce.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccCJVFdl.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_7f957.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_7f957.dir/']
+        ignore line: [ /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/as -v --traditional-format -march=rv32imc_zicsr_zifencei -march=rv32imc_zicsr_zifencei -mabi=ilp32 -misa-spec=20191213 -o CMakeFiles/cmTC_7f957.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccIJFwZB.s]
         ignore line: [GNU assembler version 2.43.1 (riscv32-esp-elf) using BFD version (crosstool-NG esp-14.2.0_20241119) 2.43.1]
         ignore line: [COMPILER_PATH=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/]
         ignore line: [LIBRARY_PATH=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_f59ce.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_f59ce.dir/CMakeCXXCompilerABI.cpp.']
-        ignore line: [[2/2] : && /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-g++ -march=rv32imc_zicsr_zifencei -nostartfiles -march=rv32imc_zicsr_zifencei  -v CMakeFiles/cmTC_f59ce.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_f59ce   && :]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imc_zicsr_zifencei' '-v' '-o' 'CMakeFiles/cmTC_7f957.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_7f957.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [[2/2] : && /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-g++ -march=rv32imc_zicsr_zifencei -nostartfiles -march=rv32imc_zicsr_zifencei  -v CMakeFiles/cmTC_7f957.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_7f957   && :]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-g++]
         ignore line: [COLLECT_LTO_WRAPPER=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper]
@@ -459,13 +459,13 @@ events:
         ignore line: [gcc version 14.2.0 (crosstool-NG esp-14.2.0_20241119) ]
         ignore line: [COMPILER_PATH=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/]
         ignore line: [LIBRARY_PATH=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/:/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imc_zicsr_zifencei' '-v' '-o' 'cmTC_f59ce' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'cmTC_f59ce.']
-        link line: [ /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2 -plugin /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.so -plugin-opt=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccYnMgah.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf -melf32lriscv -X -o cmTC_f59ce -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib CMakeFiles/cmTC_f59ce.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm -lgcc -lc -lnosys -lc -lgcc]
+        ignore line: [COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imc_zicsr_zifencei' '-v' '-o' 'cmTC_7f957' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'cmTC_7f957.']
+        link line: [ /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2 -plugin /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.so -plugin-opt=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cc0ZwJnR.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf -melf32lriscv -X -o cmTC_7f957 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0 -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib -L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib CMakeFiles/cmTC_7f957.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm -lgcc -lc -lnosys -lc -lgcc]
           arg [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccYnMgah.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cc0ZwJnR.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
           arg [-plugin-opt=-pass-through=-lnosys] ==> ignore
@@ -475,7 +475,7 @@ events:
           arg [-melf32lriscv] ==> ignore
           arg [-X] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_f59ce] ==> ignore
+          arg [cmTC_7f957] ==> ignore
           arg [-L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32] ==> dir [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32]
           arg [-L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32] ==> dir [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32]
           arg [-L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32] ==> dir [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32]
@@ -483,7 +483,7 @@ events:
           arg [-L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc] ==> dir [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc]
           arg [-L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib] ==> dir [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib]
           arg [-L/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib] ==> dir [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../riscv32-esp-elf/lib]
-          arg [CMakeFiles/cmTC_f59ce.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
+          arg [CMakeFiles/cmTC_7f957.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
           arg [-lstdc++] ==> lib [stdc++]
           arg [-lm] ==> lib [m]
           arg [-lgcc] ==> lib [gcc]
@@ -493,7 +493,7 @@ events:
           arg [-lgcc] ==> lib [gcc]
         ignore line: [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld: warning: cannot find entry symbol _start]
         ignore line: [ defaulting to 00010094]
-        ignore line: [COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imc_zicsr_zifencei' '-v' '-o' 'cmTC_f59ce' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'cmTC_f59ce.']
+        ignore line: [COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imc_zicsr_zifencei' '-v' '-o' 'cmTC_7f957' '-mabi=ilp32' '-misa-spec=20191213' '-march=rv32imc_zicsr_zifencei' '-dumpdir' 'cmTC_7f957.']
         ignore line: []
         ignore line: []
         collapse library dir [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32] ==> [/home/lukasz/.platformio/packages/toolchain-riscv32-esp/lib/gcc/riscv32-esp-elf/14.2.0/rv32imc_zicsr_zifencei/ilp32]
@@ -520,8 +520,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-U29j25"
-      binary: "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-U29j25"
+      source: "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-t68DGj"
+      binary: "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-t68DGj"
     cmakeVariables:
       CMAKE_C_FLAGS: "-march=rv32imc_zicsr_zifencei "
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -531,12 +531,12 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: '/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-U29j25'
+        Change Dir: '/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-t68DGj'
         
-        Run Build Command(s): /home/lukasz/.platformio/packages/tool-ninja/ninja -v cmTC_7a02f
-        [1/2] /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc -DCMAKE_HAVE_LIBC_PTHREAD  -march=rv32imc_zicsr_zifencei -o CMakeFiles/cmTC_7a02f.dir/src.c.obj -c /media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-U29j25/src.c
-        [2/2] : && /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc -march=rv32imc_zicsr_zifencei -nostartfiles -march=rv32imc_zicsr_zifencei CMakeFiles/cmTC_7a02f.dir/src.c.obj -o cmTC_7a02f   && :
-        /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld: CMakeFiles/cmTC_7a02f.dir/src.c.obj: in function `main':
+        Run Build Command(s): /home/lukasz/.platformio/packages/tool-ninja/ninja -v cmTC_9615b
+        [1/2] /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc -DCMAKE_HAVE_LIBC_PTHREAD  -march=rv32imc_zicsr_zifencei -o CMakeFiles/cmTC_9615b.dir/src.c.obj -c /media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-t68DGj/src.c
+        [2/2] : && /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc -march=rv32imc_zicsr_zifencei -nostartfiles -march=rv32imc_zicsr_zifencei CMakeFiles/cmTC_9615b.dir/src.c.obj -o cmTC_9615b   && :
+        /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld: CMakeFiles/cmTC_9615b.dir/src.c.obj: in function `main':
         src.c:(.text+0x6e): warning: pthread_atfork is not implemented and will always fail
         /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld: src.c:(.text+0x50): warning: pthread_cancel is not implemented and will always fail
         /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld: src.c:(.text+0x34): warning: pthread_create is not implemented and will always fail
@@ -556,8 +556,8 @@ events:
     checks:
       - "Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS"
     directories:
-      source: "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-QpmBUK"
-      binary: "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-QpmBUK"
+      source: "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-nOuH9L"
+      binary: "/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-nOuH9L"
     cmakeVariables:
       CMAKE_C_FLAGS: "-march=rv32imc_zicsr_zifencei  -Wall -Wextra -Wwrite-strings -Wmissing-prototypes -Wformat=2 -Wno-format-nonliteral -Wvla -Wlogical-op -Wshadow"
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -567,11 +567,11 @@ events:
       variable: "C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS"
       cached: true
       stdout: |
-        Change Dir: '/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-QpmBUK'
+        Change Dir: '/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-nOuH9L'
         
-        Run Build Command(s): /home/lukasz/.platformio/packages/tool-ninja/ninja -v cmTC_f78aa
-        [1/2] /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc -DC_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS  -march=rv32imc_zicsr_zifencei  -Wall -Wextra -Wwrite-strings -Wmissing-prototypes -Wformat=2 -Wno-format-nonliteral -Wvla -Wlogical-op -Wshadow    -Wformat-signedness -o CMakeFiles/cmTC_f78aa.dir/src.c.obj -c /media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-QpmBUK/src.c
-        [2/2] : && /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc -march=rv32imc_zicsr_zifencei  -Wall -Wextra -Wwrite-strings -Wmissing-prototypes -Wformat=2 -Wno-format-nonliteral -Wvla -Wlogical-op -Wshadow -nostartfiles -march=rv32imc_zicsr_zifencei CMakeFiles/cmTC_f78aa.dir/src.c.obj -o cmTC_f78aa   && :
+        Run Build Command(s): /home/lukasz/.platformio/packages/tool-ninja/ninja -v cmTC_eb7ab
+        [1/2] /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc -DC_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS  -march=rv32imc_zicsr_zifencei  -Wall -Wextra -Wwrite-strings -Wmissing-prototypes -Wformat=2 -Wno-format-nonliteral -Wvla -Wlogical-op -Wshadow    -Wformat-signedness -o CMakeFiles/cmTC_eb7ab.dir/src.c.obj -c /media/lukasz/55DFF36A13D271611/programming/PPFDmeter/.pio/build/dfrobot_beetle_esp32c3/CMakeFiles/CMakeScratch/TryCompile-nOuH9L/src.c
+        [2/2] : && /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-gcc -march=rv32imc_zicsr_zifencei  -Wall -Wextra -Wwrite-strings -Wmissing-prototypes -Wformat=2 -Wno-format-nonliteral -Wvla -Wlogical-op -Wshadow -nostartfiles -march=rv32imc_zicsr_zifencei CMakeFiles/cmTC_eb7ab.dir/src.c.obj -o cmTC_eb7ab   && :
         /home/lukasz/.platformio/packages/toolchain-riscv32-esp/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld: warning: cannot find entry symbol _start; defaulting to 00010094
         
       exitCode: 0

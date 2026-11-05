@@ -13,7 +13,7 @@ namespace OledDisplay
     /* easter egg */
     void drawScreenSaver();
     void drawVictrebelAt(int target_x, int target_y,const uint8_t* sprite, uint8_t *buffer);
-    void drawScreen(MeasurementData& data );
+    void drawScreen(MeasurementData& data, ConfigData& config);
 
     constexpr int DisplayWidth_px = 128; /*(128px)*/;
     constexpr int DisplayHeight_px = 64;

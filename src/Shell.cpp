@@ -22,6 +22,7 @@ extern "C"
 #include "BtSerial.hpp"
 #include "Shell.hpp"
 #include "I2c.hpp"
+#include "LightSensor.hpp"
 #include "controller.hpp"
 
 namespace ShellCmd
@@ -302,6 +303,8 @@ void ShellCmd::version()
 
 void ShellCmd::printConfig()
 {
+    int lux = LightSensor::getLux();
+    int ppfd = LightSensor::getPpfd();
 
     #if 0
     if (true==hwSwitchInput::btEnblSwitchisON())
@@ -316,8 +319,11 @@ void ShellCmd::printConfig()
     ShellIO::println(" ");
 
     bool connected = WifiManager::isConnected();
-    ShellIO::printf("Wifi status    : %s \n\r", connected ? "Connected" : "NOK");
-    ShellIO::printf("LostPackets:   : %d \n\r" ,WifiManager::getLostPacketsNum());
+
+    ShellIO::printf("Lux  : %d \n\r",lux);
+    ShellIO::printf("PPFD : %d /n/r",ppfd);
+
+
 
 }
 
@@ -366,23 +372,25 @@ void ShellCmd:: system()
 void ShellCmd::i2cScan()
 {
 
-    int devAddr[I2C::devicesNmb] = {0,0};
+    int devAddr[I2C::devicesNmb] = {};
     /*to do - correct I2C::scan API */
     int devCount = I2C::scan(&devAddr[0]);
-    if (devCount>0)
+
+    for(int i = 0;i<devCount;i++)
     {
-        ShellIO::printf("Device found at 0x%02X\r\n", devAddr[devCount-1]);
+  
+        ShellIO::printf("Device %s found at 0x%02X\r\n", I2C::GetDeviceName( devAddr[i]), devAddr[i]);
     }
+
      ShellIO::printf("Found %d known I2C device(s) \r\n", devCount );
 }
 
 void ShellCmd::showHwio()
 {
-#if 0
-        bool pinState = 255;
-     pinState = hwSwitchInput::switchIsOn(HwConfig::joyLeft_Switch);
-    ShellIO::printf("Joy left switch  : %d\r\n",pinState);
-    #endif
+
+    int lightSensorRaw = LightSensor::readRaw();
+
+    ShellIO::printf ("lightSensorRaw:    %d\n\r",lightSensorRaw);
 
 }
 

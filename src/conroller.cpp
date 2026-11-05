@@ -4,6 +4,7 @@
 #include "WifiManager.hpp"
 #include "controller.hpp"
 #include "OledDisplay.hpp"
+#include "LightSensor.hpp"
 
 bool ScreenSaverEnabled = false;
 
@@ -21,20 +22,16 @@ void controller::periodic()
     data.humidity = SENSOR_ERROR;
     data.temperature = SENSOR_ERROR;
 
+ConfigData config;
 
-    if (!ScreenSaverEnabled)
+    LightSensor::update();
+    data.lux = LightSensor::getLux();
+    data.ppfd = LightSensor::getPpfd();
+
+    OledDisplay::drawScreen(data,config);
+
+    if (ScreenSaverEnabled)
     {
-
-        OledDisplay::drawScreen(data);
-    }
-    else
-    {
-#if 0
-
-        // Wyrenderowanie klatki na podstawie aktualnych współrzędnych
-        OledDisplay::drawVictrebelAt(posX, posY);
-#endif
-        OledDisplay::drawScreen(data);
         OledDisplay::drawScreenSaver();
     }
 
