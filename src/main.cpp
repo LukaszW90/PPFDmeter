@@ -58,8 +58,11 @@ extern "C" void app_main() {
    /// Timer::init();
     NvsManager::initNvs(); 
 
-   // BtSerial::init("GL_QS");
-   // vTaskDelay(pdMS_TO_TICKS(1000));
+    controller::init();
+    BtSerial::init("LM");
+  //  BtSerial::disable();
+
+    vTaskDelay(pdMS_TO_TICKS(1000));
 
 
     xTaskCreate(controller_task, "controller", 6144, nullptr, 1, nullptr);
