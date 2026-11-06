@@ -25,6 +25,8 @@ extern "C"
 #include "LightSensor.hpp"
 #include "RhTempSensor.hpp"
 #include "controller.hpp"
+#include "Button.hpp"
+
 
 namespace ShellCmd
 {
@@ -399,6 +401,8 @@ void ShellCmd::showHwio()
     uint16_t rawRh = RhTempSensor::getRh();
     ShellIO::printf ("Temperature Raw :    %d\n\r",rawTemp);
     ShellIO::printf ("RH Sensor Raw   :    %d\n\r",rawRh);
+    ShellIO::println ("");
+    ShellIO::printf ("Button          :    %d\n\r",Button::isOn());
 
 
 }

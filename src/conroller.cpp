@@ -6,6 +6,7 @@
 #include "OledDisplay.hpp"
 #include "LightSensor.hpp"
 #include "RhTempSensor.hpp"
+#include "Button.hpp"
 
 bool ScreenSaverEnabled = false;
 
@@ -23,8 +24,10 @@ void controller::periodic()
     data.humidity = SENSOR_ERROR;
     data.temperature = SENSOR_ERROR;
 
-ConfigData config;
+    ConfigData config;
 
+
+    Button::update();
     LightSensor::update();
     RhTempSensor::update();
 

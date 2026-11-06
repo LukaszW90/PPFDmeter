@@ -27,6 +27,7 @@ extern "C" {
 #include "NvsManager.hpp"
 #include "LightSensor.hpp"
 #include "RhTempSensor.hpp"
+#include "Button.hpp"
 #include "controller.hpp"
 
 namespace TaskPeriod_ms
@@ -47,7 +48,7 @@ void shell_task(void*);
 
 extern "C" void app_main() {
 
-    hwSwitchInput::init();
+    Button::init();
     Uart::init();
     I2C::init();
     OledDisplay::init();
