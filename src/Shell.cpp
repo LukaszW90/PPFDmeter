@@ -17,7 +17,7 @@ extern "C"
 #include "WifiManager.hpp"
 ///#include "NvsManager.hpp"
 #include "HwInput.hpp"
-//#include "Timer.hpp"
+#include "Timer.hpp"
 #include "Uart.hpp"
 #include "BtSerial.hpp"
 #include "Shell.hpp"
@@ -36,8 +36,6 @@ namespace ShellCmd
    void system();
    void i2cScan();
    void showHwio();
-
-   void getLastFrame();
 
 }
 
@@ -285,7 +283,6 @@ void ShellCmd::help()
     ShellIO::print(" i2cscan\r\n"); 
     ShellIO::print(" nvsclear\r\n");  
     ShellIO::print(" restart\r\n");  
-    ShellIO::print(" getlastframe\r\n");  
 
 }
 
@@ -349,8 +346,9 @@ void ShellCmd:: system()
 
   //  int msec =  esp_timer_get_time()/ 1000;
 
-    //msec = Timer::getSysTime_ms();
-  //  ShellIO::printf("Systime            : %d msec\r\n", msec); 
+    int msec = Timer::getSysTime_ms();
+    ShellIO::printf("Systime            : %d msec\r\n", msec); 
+    ShellIO::println("");
 
     ShellIO::printf("Free heap          : %u\r\n",  heap_caps_get_free_size(MALLOC_CAP_DEFAULT));
     ShellIO::printf("Min heap           : %u\r\n",  heap_caps_get_minimum_free_size(MALLOC_CAP_DEFAULT));
@@ -359,6 +357,7 @@ void ShellCmd:: system()
     esp_chip_info(&chipInfo);
     ShellIO::printf("Cores              : %d\r\n",  chipInfo.cores);
     ShellIO::printf("Revision           : %d\r\n",  chipInfo.revision);
+    ShellIO::println("");
 
     ShellIO::printf( "WiFi              : %s\r\n", (chipInfo.features & CHIP_FEATURE_WIFI_BGN) ? "YES" : "NO");
     ShellIO::printf("BLE                : %s\r\n",  (chipInfo.features & CHIP_FEATURE_BLE) ? "YES" : "NO");
@@ -404,13 +403,6 @@ void ShellCmd::showHwio()
 
 }
 
-void ShellCmd::getLastFrame()
-{
-
-
-
-
-}
 
 /*-------------- Shell IO -------------------*/
 char ShellIO::read()
