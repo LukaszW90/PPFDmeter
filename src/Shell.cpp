@@ -23,6 +23,7 @@ extern "C"
 #include "Shell.hpp"
 #include "I2c.hpp"
 #include "LightSensor.hpp"
+#include "RhTempSensor.hpp"
 #include "controller.hpp"
 
 namespace ShellCmd
@@ -321,8 +322,11 @@ void ShellCmd::printConfig()
     bool connected = WifiManager::isConnected();
 
     ShellIO::printf("Lux  : %d \n\r",lux);
-    ShellIO::printf("PPFD : %d /n/r",ppfd);
-
+    ShellIO::printf("PPFD : %d \n\r",ppfd);
+    float Temp = RhTempSensor::getTemp();
+    float Rh = RhTempSensor::getRh();
+    ShellIO::printf ("Temperature Raw :    %f\n\r",Temp);
+    ShellIO::printf ("RH Sensor Raw   :    %f\n\r",Rh);
 
 
 }
@@ -390,7 +394,13 @@ void ShellCmd::showHwio()
 
     int lightSensorRaw = LightSensor::readRaw();
 
-    ShellIO::printf ("lightSensorRaw:    %d\n\r",lightSensorRaw);
+    ShellIO::printf ("light Sensor Raw:    %d\n\r",lightSensorRaw);
+
+    uint16_t rawTemp = RhTempSensor::getTemp();
+    uint16_t rawRh = RhTempSensor::getRh();
+    ShellIO::printf ("Temperature Raw :    %d\n\r",rawTemp);
+    ShellIO::printf ("RH Sensor Raw   :    %d\n\r",rawRh);
+
 
 }
 
