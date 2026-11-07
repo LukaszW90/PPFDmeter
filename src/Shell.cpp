@@ -17,7 +17,7 @@ extern "C"
 #include "WifiManager.hpp"
 ///#include "NvsManager.hpp"
 #include "HwInput.hpp"
-//#include "Timer.hpp"
+#include "Timer.hpp"
 #include "Uart.hpp"
 #include "BtSerial.hpp"
 #include "Shell.hpp"
@@ -25,6 +25,8 @@ extern "C"
 #include "LightSensor.hpp"
 #include "RhTempSensor.hpp"
 #include "controller.hpp"
+#include "Button.hpp"
+
 
 namespace ShellCmd
 {
@@ -36,8 +38,6 @@ namespace ShellCmd
    void system();
    void i2cScan();
    void showHwio();
-
-   void getLastFrame();
 
 }
 
@@ -285,7 +285,6 @@ void ShellCmd::help()
     ShellIO::print(" i2cscan\r\n"); 
     ShellIO::print(" nvsclear\r\n");  
     ShellIO::print(" restart\r\n");  
-    ShellIO::print(" getlastframe\r\n");  
 
 }
 
@@ -349,8 +348,9 @@ void ShellCmd:: system()
 
   //  int msec =  esp_timer_get_time()/ 1000;
 
-    //msec = Timer::getSysTime_ms();
-  //  ShellIO::printf("Systime            : %d msec\r\n", msec); 
+    int msec = Timer::getSysTime_ms();
+    ShellIO::printf("Systime            : %d msec\r\n", msec); 
+    ShellIO::println("");
 
     ShellIO::printf("Free heap          : %u\r\n",  heap_caps_get_free_size(MALLOC_CAP_DEFAULT));
     ShellIO::printf("Min heap           : %u\r\n",  heap_caps_get_minimum_free_size(MALLOC_CAP_DEFAULT));
@@ -359,6 +359,7 @@ void ShellCmd:: system()
     esp_chip_info(&chipInfo);
     ShellIO::printf("Cores              : %d\r\n",  chipInfo.cores);
     ShellIO::printf("Revision           : %d\r\n",  chipInfo.revision);
+    ShellIO::println("");
 
     ShellIO::printf( "WiFi              : %s\r\n", (chipInfo.features & CHIP_FEATURE_WIFI_BGN) ? "YES" : "NO");
     ShellIO::printf("BLE                : %s\r\n",  (chipInfo.features & CHIP_FEATURE_BLE) ? "YES" : "NO");
@@ -400,17 +401,12 @@ void ShellCmd::showHwio()
     uint16_t rawRh = RhTempSensor::getRh();
     ShellIO::printf ("Temperature Raw :    %d\n\r",rawTemp);
     ShellIO::printf ("RH Sensor Raw   :    %d\n\r",rawRh);
+    ShellIO::println ("");
+    ShellIO::printf ("Button          :    %d\n\r",Button::isOn());
 
 
 }
 
-void ShellCmd::getLastFrame()
-{
-
-
-
-
-}
 
 /*-------------- Shell IO -------------------*/
 char ShellIO::read()

@@ -55,5 +55,11 @@ struct ConfigData
     char fileName[32];
 };
 
+struct StatusData
+{
+    bool BleStatus = false;
+    int batteryPercent = 100;
+    bool recording = false;
+};
 
 constexpr uint32_t SENSOR_ERROR = 0xFFFFFFFF;

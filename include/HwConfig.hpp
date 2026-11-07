@@ -29,6 +29,8 @@ GPIO 0 (Analog 0)  -
 namespace HwConfig
 {
 
+    constexpr gpio_num_t Button = GPIO_NUM_0;
+
     /* I2C */
     constexpr gpio_num_t I2cSdaPin = GPIO_NUM_6;
     constexpr gpio_num_t I2cSclPin = GPIO_NUM_7;
