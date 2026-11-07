@@ -60,7 +60,7 @@ extern "C" void app_main() {
 
     controller::init();
     BtSerial::init("LM");
-  //  BtSerial::disable();
+    BtSerial::disable();
 
     vTaskDelay(pdMS_TO_TICKS(1000));
 

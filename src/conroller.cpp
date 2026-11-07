@@ -32,6 +32,7 @@ void controller::periodic()
     ConfigData config;
     StatusData  status;
     status.BleStatus = BtSerial::isBleActive();
+    status.recording = false;
 
     Button::update();
     LightSensor::update();
@@ -59,11 +60,13 @@ void controller::periodic()
             ScreenSaverEnabled = false;
             break;
         case Button::Event::DoubleClick:
+
             BtSerial::enable();
 
             break;    
         case Button::Event::LongPress:
             //Logger::Start(00,00);
+            status.recording = true;
             break;
         case Button::Event::Released:
             /* do nothing */
