@@ -17,6 +17,7 @@ extern "C" {
 #include "BtSerial.hpp"
 
 
+constexpr uint64_t Timeout_sec = 120;
 static const char *TAG = "BtSerial";
 
 static uint8_t  rx_buf[256];
@@ -170,19 +171,11 @@ static void start_advertising()
     struct ble_gap_adv_params adv_params;
     memset(&adv_params, 0, sizeof(adv_params));
 
-    adv_params.conn_mode =
-        BLE_GAP_CONN_MODE_UND;
+    adv_params.conn_mode = BLE_GAP_CONN_MODE_UND;
 
-    adv_params.disc_mode =
-        BLE_GAP_DISC_MODE_GEN;
+    adv_params.disc_mode = BLE_GAP_DISC_MODE_GEN;
 
-    rc = ble_gap_adv_start(
-        addr_type,
-        NULL,
-        BLE_HS_FOREVER,
-        &adv_params,
-        gap_event,
-        NULL);
+    rc = ble_gap_adv_start( addr_type, NULL, BLE_HS_FOREVER, &adv_params, gap_event, NULL);
 
     ESP_LOGI(TAG, "adv_start rc=%d", rc);
 }
@@ -399,6 +392,8 @@ bool BtSerial::enable()
     start_advertising();
     ESP_LOGD(TAG, "BLE enabled");
     
+    ResetTimeout();
+
     return true; /* state enabled - return status 1 */
 
 }
@@ -422,8 +417,15 @@ bool BtSerial::disable()
     return true; /* state disabled - return status 1 */
 }
 
+/* Tiemout checking */
 void BtSerial::Periodic()
 {
+    
+    uint64_t currentTime_sec = Timer::getSysTime_sec();
+    if (currentTime_sec - sLastActivityTime_sec > Timeout_sec)
+    {
+        disable();
+    }
  
 }
 

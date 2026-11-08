@@ -8,7 +8,7 @@ namespace LightSensor
 
   int getLux();
   int getPpfd();
-  uint8_t getProfile();
+  Lux2PpfdProfile getProfile();
   int readRaw();
   void setProfile( Lux2PpfdProfile profile);
 }

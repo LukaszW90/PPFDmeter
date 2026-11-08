@@ -37,6 +37,7 @@ namespace HwConfig
     constexpr int I2cFreq = 100000;
 
     /* SPI */
+    constexpr gpio_num_t SpiCsPin = GPIO_NUM_1;
     constexpr gpio_num_t SpiSckPin = GPIO_NUM_8;
     constexpr gpio_num_t SpiMosiPin = GPIO_NUM_9;
     constexpr gpio_num_t SpiMisoPin = GPIO_NUM_10;
@@ -44,6 +45,8 @@ namespace HwConfig
     /* Uart  */
     constexpr gpio_num_t UartRxPin = GPIO_NUM_20;
     constexpr gpio_num_t UartTxPin = GPIO_NUM_21;
+
+
 
     /* I2C devicesAddr */
     namespace I2cAddr

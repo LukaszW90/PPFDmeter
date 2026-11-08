@@ -9,6 +9,7 @@
 #include "Button.hpp"
 #include "Timer.hpp"
 #include "BtSerial.hpp"
+#include "Logger.hpp"
 
 bool ScreenSaverEnabled = false;
 uint64_t screensaverTimer_sec = 0; 
@@ -30,13 +31,18 @@ void controller::periodic()
     data.temperature = SENSOR_ERROR;
 
     ConfigData config;
+    config.Profile = LightSensor::getProfile();
+    config.loggingInterval_s = 5*60;
+    memcpy (config.fileName,"log0000.csv",sizeof("log0000.csv"));
+
     StatusData  status;
     status.BleStatus = BtSerial::isBleActive();
-    status.recording = false;
+    status.recording = Logger::getLoggerState();
 
     Button::update();
     LightSensor::update();
     RhTempSensor::update();
+    BtSerial::Periodic();
 
     data.lux = LightSensor::getLux();
     data.ppfd = LightSensor::getPpfd();
@@ -65,7 +71,7 @@ void controller::periodic()
 
             break;    
         case Button::Event::LongPress:
-            //Logger::Start(00,00);
+            Logger::start(00,00);
             status.recording = true;
             break;
         case Button::Event::Released:
