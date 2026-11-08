@@ -26,6 +26,7 @@ extern "C"
 #include "RhTempSensor.hpp"
 #include "controller.hpp"
 #include "Button.hpp"
+#include "Logger.hpp"
 
 
 namespace ShellCmd
@@ -208,6 +209,8 @@ void Shell::Periodic()
 void ShellCmd::handle(const char* cmd)
 {
 int temp{};
+char profile[16];
+int argc = 0;
 
     if (strcmp(cmd, "help") == 0)
     {
@@ -245,9 +248,52 @@ int temp{};
         ShellIO::println("restarting...");
         esp_restart();
     }
-   else if(sscanf(cmd,"setscreensaver %d",&temp) == 1)
+    else if (strcmp(cmd, "blestop") == 0)
+    {
+        ShellIO::println("Stop Bluetooth...");
+        BtSerial::disable();
+    }
+    else if(sscanf(cmd,"setscreensaver %d",&temp) == 1)
     {
         controller::setScreensaverEnabled(temp);    
+    }
+    else if (strncmp(cmd, "setprofile", 10) == 0)
+    {
+        if (sscanf(cmd, "setprofile %15s", profile) != 1)       
+        {
+            ShellIO::println("Available params:");
+            ShellIO::println("led3200 (warm led), led4000, led6500 (cold led), sun");
+        }
+        else if (strcmp(profile, "led3200") == 0)
+        {
+            LightSensor::setProfile(Lux2PpfdProfile::Led3200K );
+            ShellIO::println("Current light measurement profile: LED 3200K");
+        }
+        else if (strcmp(profile, "led4000") == 0)
+        {
+            LightSensor::setProfile(Lux2PpfdProfile::Led4000K );
+            ShellIO::println("Current light measurement profile: LED 4000K");
+
+        }
+        else if (strcmp(profile, "led6500") == 0)
+        {
+            LightSensor::setProfile(Lux2PpfdProfile::Led6500K );
+            ShellIO::println("Current light measurement profile: LED 6500K");
+
+        }
+        else if (strcmp(profile, "sun") == 0)
+        {
+            LightSensor::setProfile(Lux2PpfdProfile::Sun );
+            ShellIO::println("Current light measurement profile: sun");
+
+        }
+        else
+        {
+            ShellIO::println(ShellMsg::InvalidParam);
+            ShellIO::println("Available params:");
+            ShellIO::println("led3200 (warm led), led4000, led6500 (cold led), sun");
+        }
+ 
     }
     else
     {
@@ -285,6 +331,8 @@ void ShellCmd::help()
     ShellIO::print(" i2cscan\r\n"); 
     ShellIO::print(" nvsclear\r\n");  
     ShellIO::print(" restart\r\n");  
+    ShellIO::print(" blestop\r\n");  
+    ShellIO::print(" setprofile\r\n");  
 
 }
 
@@ -326,7 +374,9 @@ void ShellCmd::printConfig()
     float Rh = RhTempSensor::getRh();
     ShellIO::printf ("Temperature Raw :    %f\n\r",Temp);
     ShellIO::printf ("RH Sensor Raw   :    %f\n\r",Rh);
-
+    ShellIO::println (" ");
+    ShellIO::printf ("Ble state       :    %s\n\r",BtSerial::isBleActive()?"ON":"OFF");
+    ShellIO::printf ("Logger state    :    %s\n\r",Logger::getLoggerState() ?"Recording":"OFF");
 
 }
 

@@ -61,9 +61,9 @@ int LightSensor::getPpfd()
     return static_cast<int>( lux * Lux2ppfd_Calibration::Values[ static_cast<uint8_t>(currentProfile) ]);
 }
 
-uint8_t LightSensor::getProfile()
+Lux2PpfdProfile LightSensor::getProfile()
 {
-  return static_cast<uint8_t>(currentProfile);
+  return currentProfile;
 }
 
 int LightSensor::readRaw(void)
