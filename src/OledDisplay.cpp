@@ -131,11 +131,13 @@ void OledDisplay::drawScreen(MeasurementData& data, ConfigData& config, StatusDa
    drawIco16x16(0,128-16,&ico16x16_bmp::lightProfiles[static_cast<int>(config.Profile)][0]);
     if (status.BleStatus)
         drawIco16x16(2,128-16,&ico16x16_bmp::Ble[0]);
-    if (status.recording)
+    if (loggerState::Waiting != status.recording)
     {
-        drawIco16x16(4,128-16,&ico16x16_bmp::Recording[0][0]);
+        drawIco16x16(4,128-16,&ico16x16_bmp::Recording[static_cast<int>(status.recording)][0]);
     }
+    #if 0
     drawIco16x16(6,128-16,&ico16x16_bmp::Battery[4][0]);
+    #endif
 }
 
 // NOWA DYNAMICZNA FUNKCJA RYSUJĄCA SPRITE NA POZYCJI X, Y

@@ -17,8 +17,8 @@ struct MeasurementData
     uint32_t lux;
     uint32_t ppfd;
 
-    uint32_t temperature;
-    uint32_t humidity;
+    float temperature;
+    float humidity;
 
     float dliSession;
     float dliTotal;
@@ -55,11 +55,20 @@ struct ConfigData
     char fileName[32];
 };
 
+enum class loggerState : uint8_t
+{
+
+    Recording = 0,
+    Done = 1,
+    Error = 2,
+    Waiting = 0xFF
+};
+
 struct StatusData
 {
     bool BleStatus = false;
     int batteryPercent = 100;
-    bool recording = false;
+    loggerState recording = loggerState::Waiting;
 };
 
 constexpr uint32_t SENSOR_ERROR = 0xFFFFFFFF;

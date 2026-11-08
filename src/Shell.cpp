@@ -376,7 +376,15 @@ void ShellCmd::printConfig()
     ShellIO::printf ("RH Sensor Raw   :    %f\n\r",Rh);
     ShellIO::println (" ");
     ShellIO::printf ("Ble state       :    %s\n\r",BtSerial::isBleActive()?"ON":"OFF");
-    ShellIO::printf ("Logger state    :    %s\n\r",Logger::getLoggerState() ?"Recording":"OFF");
+    switch (Logger::getLoggerState() )
+    {
+        case loggerState::Waiting:     ShellIO::println ("Logger state    :    Idle"); break;
+        case loggerState::Recording:   ShellIO::println ("Logger state    :    Recording"); break;
+        case loggerState::Error:       ShellIO::println ("Logger state    :    Error"); break;
+        case loggerState::Done:        ShellIO::println ("Logger state    :    Done"); break;
+    default:
+        break;
+    }
 
 }
 

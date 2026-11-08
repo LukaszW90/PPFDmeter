@@ -44,10 +44,13 @@ void controller::periodic()
     RhTempSensor::update();
     BtSerial::Periodic();
 
+
     data.lux = LightSensor::getLux();
     data.ppfd = LightSensor::getPpfd();
     data.temperature = static_cast<uint32_t> (RhTempSensor::getTemp());
     data.humidity = static_cast<uint32_t> (RhTempSensor::getRh());
+
+
 
     if( (Timer::getTime_sec() - screensaverTimer_sec) > 5*60)
     {
@@ -66,18 +69,23 @@ void controller::periodic()
             ScreenSaverEnabled = false;
             break;
         case Button::Event::DoubleClick:
-
+            screensaverTimer_sec = Timer::getTime_sec();
             BtSerial::enable();
 
             break;    
         case Button::Event::LongPress:
-            Logger::start(00,00);
-            status.recording = true;
+            screensaverTimer_sec = Timer::getTime_sec();
+
+            Logger::start(00,00,20,24);
+            status.recording=Logger::getLoggerState();
             break;
         case Button::Event::Released:
             /* do nothing */
             break;
     }
+
+    Logger::update( data);
+
 
     OledDisplay::drawScreen(data,config,status);
 
