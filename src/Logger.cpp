@@ -1,12 +1,19 @@
+#include "Logger.hpp"
+
 #include <stdio.h>
 
 #include "driver/spi_common.h"
 #include "driver/spi_master.h"
-
+#include "esp_log.h"
+#include "esp_err.h"
 #include "esp_vfs_fat.h"
 
 #include "sdmmc_cmd.h"
 #include "driver/sdspi_host.h"
+#include "common.hpp"
+#include "HwConfig.hpp"
+#include "Timer.hpp"
+#include "Logger.hpp"
 /*
 ESP32-C3      microSD
 
@@ -19,60 +26,110 @@ GND   ------> GND
 
 */
 
-bool sdMounted = false;
+namespace
+{
+    loggerState CurrentState = loggerState::Waiting;
+    bool sdMounted = false;
+    uint32_t lastSaveTime_sec = 0;
+    uint32_t startingTime_sec = 0;
+    int sampleOffset_sec_ =  5*60;
+    int recordingTime_h_ = 24;
 
-void Logger::logData(int timestamp, int lux, int ppfd, int temp, int humidity)
+   MeasurementData dataLog[32];
+   int DataLogBufNmb = 0;
+}
+
+void Logger::update( MeasurementData& data)
+{
+    uint64_t currentTime = Timer::getSysTime_sec();
+    int timestamp_min = Timer::getTime_sec();
+    if(CurrentState==loggerState::Recording)
+    {
+        if(currentTime - lastSaveTime_sec > sampleOffset_sec_)
+        {
+
+            Logger::logData(timestamp_min, data);
+            lastSaveTime_sec = Timer::getSysTime_sec();
+        }
+
+        if (currentTime - startingTime_sec >  180/*Timer::hmsToSec(recordingTime_h_,0) */)
+        {
+                CurrentState = loggerState::Done; //todo: state done
+        }
+    }
+
+}
+
+void OfflineLogUpadte( MeasurementData& data )
+{
+  int i = DataLogBufNmb%32;
+  memcpy(&LogData[DataLogBufNmb],data, sizeof(MeasurementData));
+    DataLogBufNmb++;
+}
+
+
+void Logger::logData(int timestamp, MeasurementData& data)
 {
   if (!sdMounted)
   {
       return;
   }
-    FILE* f = fopen("/sdcard/log.csv", "a");
+    FILE* f = fopen("/sdcard/log0000.csv", "a");
     
     if (f)
     {
-        fprintf(f, "%lu;%u;%u;%.1f;%.1f\n", timestamp, lux, ppfd, temp, humidity);
+        fprintf(f, "%d; %lu;%lu; %0.1f; %0.1f\n", timestamp, data.lux, data.ppfd, data.temperature, data.humidity);
     
         fclose(f);
     }
 }
 
-void Logger::startLogging()
+void Logger::start(const int hh, const int mm, uint64_t sampleOffset_sec, int recordingTime_h)
 {
-  FILE *f = fopen("/sdcard/log.csv", "w");
+  FILE *f = fopen("/sdcard/log0000.csv", "w");
 
   if(f)
   {
-      fprintf(f,"time;lux;ppfd;temp;rh\n");
+
+    fprintf(f,"time;lux;ppfd;temp;rh\n");
   
-      fclose(f);
+    fclose(f);
+
+    Timer::SetTimeHms(hh,mm,00);
+    lastSaveTime_sec = Timer::getSysTime_sec();
+    startingTime_sec = Timer::getSysTime_sec();
+    sampleOffset_sec_ =  sampleOffset_sec;
+    recordingTime_h_ = recordingTime_h;
+
+    CurrentState = loggerState::Recording;
+  }
+  else
+  {
+    CurrentState = loggerState::Error;
   }
 }
 
-#define PIN_NUM_MISO 4
-#define PIN_NUM_MOSI 5
-#define PIN_NUM_CLK  6
-#define PIN_NUM_CS   7
-
-void Logger::Init()
+void Logger::init()
 {
   InitSpi();
   SdCardInit();
 }
+
 void Logger::InitSpi()
 {
   spi_bus_config_t bus_cfg = {
-      .mosi_io_num = PIN_NUM_MOSI,
-      .miso_io_num = PIN_NUM_MISO,
-      .sclk_io_num = PIN_NUM_CLK,
+      .mosi_io_num = HwConfig::SpiMosiPin,
+      .miso_io_num = HwConfig::SpiMisoPin,
+      .sclk_io_num = HwConfig::SpiSckPin,
       .quadwp_io_num = -1,
       .quadhd_io_num = -1,
       .max_transfer_sz = 4000,
   };
-  
+    sdmmc_host_t host = SDSPI_HOST_DEFAULT();
+
   ESP_ERROR_CHECK(
       spi_bus_initialize(
-          SDSPI_HOST_DEFAULT().slot,
+          static_cast<spi_host_device_t>(host.slot),
           &bus_cfg,
           SDSPI_DEFAULT_DMA
       )
@@ -86,8 +143,8 @@ void Logger::SdCardInit()
 
 sdspi_device_config_t slot_config = SDSPI_DEVICE_CONFIG_DEFAULT();
 
-slot_config.gpio_cs = PIN_NUM_CS;
-slot_config.host_id = host.slot;
+slot_config.gpio_cs = HwConfig::SpiCsPin;
+slot_config.host_id = static_cast<spi_host_device_t>(host.slot);
 
 /* init filesystem */
 
@@ -111,41 +168,20 @@ esp_err_t ret = esp_vfs_fat_sdspi_mount( "/sdcard", &host, &slot_config, &mount_
   {
     sdMounted = true;
   }
-
-
-  
 }
 
-#If 0
+#if 0
 Logger::UnMountSD()
 {
   fflush(...)
   fclose(...)
  esp_vfs_fat_sdcard_unmount("/sdcard", card);
 }
-
-// common.h
-
-struct MeasurementData
-{
-    uint32_t timestamp;
-
-    uint32_t lux;
-    uint32_t ppfd;
-
-    float temperature;
-    float humidity;
-
-    float batteryVoltage;
-    float dli;
-};
-
-/*
-LightSensor      100-200 ms
-Temp/Humidity    2-5 s
-Display          500 ms
-Logger           5 min
-
-
-*/
 #endif
+
+
+loggerState Logger::getLoggerState()
+{
+    return  CurrentState;
+;
+}
