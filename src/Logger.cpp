@@ -84,6 +84,10 @@ void Logger::logData(int timestamp, MeasurementData& data)
     }
 }
 
+void Logger::stop()
+{
+    CurrentState = loggerState::Waiting;
+}
 void Logger::start(const int hh, const int mm, uint64_t sampleOffset_sec, int recordingTime_h)
 {
   FILE *f = fopen("/sdcard/log0000.csv", "w");
