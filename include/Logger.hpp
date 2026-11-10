@@ -8,6 +8,7 @@ namespace Logger
     void update( MeasurementData& data) ;
     loggerState getLoggerState();
     void start(const int hh, const int mm, uint64_t sampleOffset_sec = 5*60, int recordingTime_h = 24);
+    void stop();
 
     void logData(int timestamp, MeasurementData& data);
     void init();

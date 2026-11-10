@@ -10,6 +10,7 @@
 #include "Timer.hpp"
 #include "BtSerial.hpp"
 #include "Logger.hpp"
+#include "HistoryLog.hpp"
 
 bool ScreenSaverEnabled = false;
 uint64_t screensaverTimer_sec = 0; 
@@ -19,6 +20,7 @@ void controller::init()
     screensaverTimer_sec = Timer::getTime_sec();
     ScreenSaverEnabled = false;
 
+    HistoryLog::init();
 }
 
 
@@ -70,14 +72,16 @@ void controller::periodic()
             break;
         case Button::Event::DoubleClick:
             screensaverTimer_sec = Timer::getTime_sec();
+            ScreenSaverEnabled = false;
             BtSerial::enable();
 
             break;    
         case Button::Event::LongPress:
             screensaverTimer_sec = Timer::getTime_sec();
-
+            ScreenSaverEnabled = false;
             Logger::start(00,00,20,24);
             status.recording=Logger::getLoggerState();
+
             break;
         case Button::Event::Released:
             /* do nothing */
@@ -85,7 +89,7 @@ void controller::periodic()
     }
 
     Logger::update( data);
-
+    HistoryLog::update(data);
 
     OledDisplay::drawScreen(data,config,status);
 

@@ -76,7 +76,7 @@ void OledDisplay::init(void) {
     OledSendCmd(0x3F); 
     OledSendCmd(0xA4); 
     OledSendCmd(0xD3); 
-    OledSendCmd(0x00); 
+    OledSendCmd(0xF8); //0x00 for white displat, 0xF8 for yellow 
     OledSendCmd(0xD5); 
     OledSendCmd(0x80);
     OledSendCmd(0xD9); 

@@ -34,12 +34,15 @@ namespace
     uint32_t startingTime_sec = 0;
     int sampleOffset_sec_ =  5*60;
     int recordingTime_h_ = 24;
+
+   MeasurementData dataLog[32];
+   int DataLogBufNmb = 0;
 }
 
 void Logger::update( MeasurementData& data)
 {
     uint64_t currentTime = Timer::getSysTime_sec();
-    int timestamp_min = Timer::getTime_sec();
+    int timestamp_min = Timer::getTime_sec()/60;
     if(CurrentState==loggerState::Recording)
     {
         if(currentTime - lastSaveTime_sec > sampleOffset_sec_)
@@ -56,6 +59,8 @@ void Logger::update( MeasurementData& data)
     }
 
 }
+
+
 void Logger::logData(int timestamp, MeasurementData& data)
 {
   if (!sdMounted)
@@ -72,6 +77,10 @@ void Logger::logData(int timestamp, MeasurementData& data)
     }
 }
 
+void Logger::stop()
+{
+    CurrentState = loggerState::Waiting;
+}
 void Logger::start(const int hh, const int mm, uint64_t sampleOffset_sec, int recordingTime_h)
 {
   FILE *f = fopen("/sdcard/log0000.csv", "w");
@@ -79,7 +88,7 @@ void Logger::start(const int hh, const int mm, uint64_t sampleOffset_sec, int re
   if(f)
   {
 
-    fprintf(f,"time;lux;ppfd;temp;rh\n");
+    fprintf(f,"time[min];lux;ppfd;temp;rh\n");
   
     fclose(f);
 
@@ -156,9 +165,6 @@ esp_err_t ret = esp_vfs_fat_sdspi_mount( "/sdcard", &host, &slot_config, &mount_
   {
     sdMounted = true;
   }
-
-
-  
 }
 
 #if 0
@@ -168,33 +174,7 @@ Logger::UnMountSD()
   fclose(...)
  esp_vfs_fat_sdcard_unmount("/sdcard", card);
 }
-
-// common.h
-
-struct MeasurementData
-{
-    uint32_t timestamp;
-
-    uint32_t lux;
-    uint32_t ppfd;
-
-    float temperature;
-    float humidity;
-
-    float batteryVoltage;
-    float dli;
-};
-
-/*
-LightSensor      100-200 ms
-Temp/Humidity    2-5 s
-Display          500 ms
-Logger           5 min
-
-
-*/
 #endif
-
 
 
 loggerState Logger::getLoggerState()
