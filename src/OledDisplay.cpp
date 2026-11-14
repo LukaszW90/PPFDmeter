@@ -302,3 +302,16 @@ static void drawNumber8x16_RightAlign(  const int row, const int column_px, cons
         drawDigit(row, column_px-DIGIT_OFFSET_PX*i, digits[i] );
     }
 }
+
+
+void OledDisplay::sleep()
+{
+    OledSendCmd(0xAE);
+}
+
+void OledDisplay::wakeup()
+{
+    uint8_t cmd = 0xAF;
+
+    OledSendCmd(0xAF);
+}

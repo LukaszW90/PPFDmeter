@@ -17,7 +17,7 @@ uint64_t screensaverTimer_sec = 0;
 
 void controller::init()
 {
-    screensaverTimer_sec = Timer::getTime_sec();
+    screensaverTimer_sec = Timer::getSysTime_sec();
     ScreenSaverEnabled = false;
 
     HistoryLog::init();
@@ -54,12 +54,12 @@ void controller::periodic()
 
 
 
-    if( (Timer::getTime_sec() - screensaverTimer_sec) > 5*60)
+    if( (Timer::getSysTime_sec() - screensaverTimer_sec) > 5*60)
     {
         ScreenSaverEnabled = true;
-        if( (Timer::getTime_sec() - screensaverTimer_sec) > 5*60)
+        if( (Timer::getSysTime_sec() - screensaverTimer_sec) > 10*60)
         {
-            //todo disable oled
+            OledDisplay::sleep();
         }
 
     }
@@ -67,19 +67,21 @@ void controller::periodic()
     switch(Button::getEvent())
     {
         case Button::Event::OneClick:
-            screensaverTimer_sec = Timer::getTime_sec();
+            screensaverTimer_sec = Timer::getSysTime_sec();
             ScreenSaverEnabled = false;
+            OledDisplay::wakeup();
+
             break;
         case Button::Event::DoubleClick:
-            screensaverTimer_sec = Timer::getTime_sec();
+            screensaverTimer_sec = Timer::getSysTime_sec();
             ScreenSaverEnabled = false;
             BtSerial::enable();
 
             break;    
         case Button::Event::LongPress:
-            screensaverTimer_sec = Timer::getTime_sec();
+            screensaverTimer_sec = Timer::getSysTime_sec();
             ScreenSaverEnabled = false;
-            Logger::start(00,00,20,24);
+            Logger::start(00,00,5*60,24);
             status.recording=Logger::getLoggerState();
 
             break;

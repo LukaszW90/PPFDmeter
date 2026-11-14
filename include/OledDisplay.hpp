@@ -9,6 +9,8 @@ namespace OledDisplay
     void clearScreen(void) ;
     void Update();
     void Refresh();
+    void sleep();
+    void wakeup();
 
     /* easter egg */
     void drawScreenSaver();

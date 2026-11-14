@@ -37,22 +37,26 @@ namespace
 
    MeasurementData dataLog[32];
    int DataLogBufNmb = 0;
+
+   char filename[32];
+
 }
 
 void Logger::update( MeasurementData& data)
 {
-    uint64_t currentTime = Timer::getSysTime_sec();
+    uint64_t currentTime_sec = Timer::getSysTime_sec();
     int timestamp_min = Timer::getTime_sec()/60;
+
     if(CurrentState==loggerState::Recording)
     {
-        if(currentTime - lastSaveTime_sec > sampleOffset_sec_)
+        if((currentTime_sec - lastSaveTime_sec) > sampleOffset_sec_)
         {
 
             Logger::logData(timestamp_min, data);
             lastSaveTime_sec = Timer::getSysTime_sec();
         }
 
-        if (currentTime - startingTime_sec >  180/*Timer::hmsToSec(recordingTime_h_,0) */)
+        if ((currentTime_sec - startingTime_sec) >  Timer::hmsToSec(recordingTime_h_,1))
         {
                 CurrentState = loggerState::Done; //todo: state done
         }
@@ -63,11 +67,12 @@ void Logger::update( MeasurementData& data)
 
 void Logger::logData(int timestamp, MeasurementData& data)
 {
-  if (!sdMounted)
-  {
-      return;
-  }
-    FILE* f = fopen("/sdcard/log0000.csv", "a");
+    if (!sdMounted)
+    {
+        return;
+    }
+
+    FILE* f = fopen(filename, "a");
     
     if (f)
     {
@@ -83,7 +88,17 @@ void Logger::stop()
 }
 void Logger::start(const int hh, const int mm, uint64_t sampleOffset_sec, int recordingTime_h)
 {
-  FILE *f = fopen("/sdcard/log0000.csv", "w");
+
+    int fileIndex = 0;
+
+    /* find first free filename index */
+    do
+    {
+        snprintf(filename, sizeof(filename), "/sdcard/log%04d.csv", fileIndex++);
+
+    } while (access(filename, F_OK) == 0);
+
+  FILE *f = fopen(filename, "w");
 
   if(f)
   {
@@ -93,9 +108,9 @@ void Logger::start(const int hh, const int mm, uint64_t sampleOffset_sec, int re
     fclose(f);
 
     Timer::SetTimeHms(hh,mm,00);
-    lastSaveTime_sec = Timer::getSysTime_sec();
+    lastSaveTime_sec = Timer::getSysTime_sec()-sampleOffset_sec;
     startingTime_sec = Timer::getSysTime_sec();
-    sampleOffset_sec_ =  sampleOffset_sec;
+    sampleOffset_sec_ = sampleOffset_sec;
     recordingTime_h_ = recordingTime_h;
 
     CurrentState = loggerState::Recording;
