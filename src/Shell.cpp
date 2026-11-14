@@ -14,7 +14,7 @@ extern "C"
     #include <cstdio>
 }
 #include "common.hpp"
-#include "WifiManager.hpp"
+//#include "WifiManager.hpp"
 ///#include "NvsManager.hpp"
 #include "HwInput.hpp"
 #include "Timer.hpp"
@@ -27,7 +27,8 @@ extern "C"
 #include "controller.hpp"
 #include "Button.hpp"
 #include "Logger.hpp"
-
+#include "HistoryLog.hpp"
+#include "OledDisplay.hpp"
 
 namespace ShellCmd
 {
@@ -39,6 +40,7 @@ namespace ShellCmd
    void system();
    void i2cScan();
    void showHwio();
+   void showHistory(); 
 
 }
 
@@ -78,7 +80,7 @@ void Shell::init( )
 {
 
     ShellIO::println(" ");
-    ShellIO::println("PPFD light plant meter Shell");
+    ShellIO::println("PPFD light meter for plants - Shell");
     ShellIO::print("> ");
 
 }
@@ -228,10 +230,22 @@ int argc = 0;
     {
         ShellCmd::showHwio();
     }
+    else if(strcmp(cmd, "history") == 0)
+    {
+        ShellCmd::showHistory();
+    }
+    else if(strcmp(cmd, "clearhistory") == 0)
+    {
+        HistoryLog::clear();
+    }
     else if(strcmp(cmd, "sysinfo") == 0)
     {
         ShellCmd::system();
     }    
+    else if(strcmp(cmd, "oledreset") == 0)
+    {
+        OledDisplay::init();
+    } 
     else if(strcmp(cmd, "i2cscan") == 0)
     {
         ShellCmd::i2cScan();
@@ -295,6 +309,48 @@ int argc = 0;
         }
  
     }
+    else if (strncmp(cmd, "startlog", 8) == 0)
+    {
+        int hh{0};
+        int mm{0};
+        int sampleOffset_min{0};
+        int recordingTime_h{0};
+
+        argc = sscanf(cmd, "startlog %d:%d %d %d",&hh,&mm, &sampleOffset_min,&recordingTime_h);
+
+            if ( argc == 4)    
+            {
+                if ((hh<24 && hh>=0) && (mm<60 && mm>=0) &&
+                    (sampleOffset_min > 0) && (recordingTime_h > 0))
+                {
+                    Timer::SetTimeHms(hh, mm, 0);
+                    Logger::start(hh,mm, sampleOffset_min*60,recordingTime_h);
+                    ShellIO::println(" Logger started"); 
+                }
+                else  ShellIO::println(ShellMsg::InvalidParam);
+
+            
+            }
+             else if (argc == 0)
+            {
+                Timer::SetTimeHms(0, 0, 0);
+                Logger::start(0,0, 5*60,24);
+                ShellIO::println(" Logger started on default parameters... "); 
+            } 
+            else
+            {      
+                ShellIO::println(ShellMsg::InvalidParam);
+                ShellIO::println("startlog HH:MM offset recTime"); 
+                ShellIO::println(" HH:MM - set first sample in log "); 
+                ShellIO::println(" offset - time interval between samples (min) "); 
+                ShellIO::println(" recTime - time of recording (h) "); 
+            }
+    }
+    else if (strncmp(cmd, "stoplog", 7) == 0)
+    {
+        ShellIO::println("Data recording stopped."); 
+        Logger::stop();
+    }
     else
     {
        ShellIO::println(ShellMsg::UnknownCommand);  
@@ -327,13 +383,17 @@ void ShellCmd::help()
     ShellIO::print(" version\r\n");
     ShellIO::print(" show\r\n"); 
     ShellIO::print(" showhwio\r\n"); 
+    ShellIO::print(" oledreset\r\n");
     ShellIO::print(" sysinfo\r\n");
     ShellIO::print(" i2cscan\r\n"); 
     ShellIO::print(" nvsclear\r\n");  
     ShellIO::print(" restart\r\n");  
     ShellIO::print(" blestop\r\n");  
     ShellIO::print(" setprofile\r\n");  
-
+    ShellIO::print(" history\r\n");  
+    ShellIO::print(" clearhistory\r\n");  
+    ShellIO::print(" startlog\r\n");
+    ShellIO::print(" stoplog\r\n");  
 }
 
 void ShellCmd::version()
@@ -354,29 +414,28 @@ void ShellCmd::printConfig()
     int lux = LightSensor::getLux();
     int ppfd = LightSensor::getPpfd();
 
-    #if 0
-    if (true==hwSwitchInput::btEnblSwitchisON())
-        ShellIO::println("BLE switch state  : ON");
-    else
-        ShellIO::println("BLE switch state  : OFF");
-    #endif
-
     #ifdef DEBUG
         ShellIO::println("DEBUG MODE\r\n");
     #endif
     ShellIO::println(" ");
 
-    bool connected = WifiManager::isConnected();
-
     ShellIO::printf("Lux  : %d \n\r",lux);
     ShellIO::printf("PPFD : %d \n\r",ppfd);
     float Temp = RhTempSensor::getTemp();
     float Rh = RhTempSensor::getRh();
-    ShellIO::printf ("Temperature Raw :    %f\n\r",Temp);
-    ShellIO::printf ("RH Sensor Raw   :    %f\n\r",Rh);
+    ShellIO::printf ("Temperature  :    %f\n\r",Temp);
+    ShellIO::printf ("RH Sensor    :    %f\n\r",Rh);
     ShellIO::println (" ");
     ShellIO::printf ("Ble state       :    %s\n\r",BtSerial::isBleActive()?"ON":"OFF");
-    ShellIO::printf ("Logger state    :    %s\n\r",Logger::getLoggerState() ?"Recording":"OFF");
+    switch (Logger::getLoggerState() )
+    {
+        case loggerState::Waiting:     ShellIO::println ("Logger state    :    Idle"); break;
+        case loggerState::Recording:   ShellIO::println ("Logger state    :    Recording"); break;
+        case loggerState::Error:       ShellIO::println ("Logger state    :    Error"); break;
+        case loggerState::Done:        ShellIO::println ("Logger state    :    Done"); break;
+    default:
+        break;
+    }
 
 }
 
@@ -386,14 +445,6 @@ void ShellCmd:: system()
     ShellIO::printf(
     "Shell stack free: %u\n",
     uxTaskGetStackHighWaterMark(shellTaskHandle));
-
-    ShellIO::printf(
-    "Lamp stack free: %u\n",
-    uxTaskGetStackHighWaterMark(lampTaskHandle));
-
-    ShellIO::printf(
-    "RTC stack free: %u\n",
-    uxTaskGetStackHighWaterMark(rtcTaskHandle));
     #endif
 
   //  int msec =  esp_timer_get_time()/ 1000;
@@ -420,8 +471,7 @@ void ShellCmd:: system()
     esp_wifi_get_mac(WIFI_IF_STA, mac);
 
     ShellIO::printf("MAC Address: %02X:%02X:%02X:%02X:%02X:%02X\n",
-    mac[0], mac[1], mac[2],
-    mac[3], mac[4], mac[5]);
+    mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 }
 
 void ShellCmd::i2cScan()
@@ -457,6 +507,20 @@ void ShellCmd::showHwio()
 
 }
 
+void ShellCmd::showHistory()
+{
+    int index = HistoryLog::getBufferHead();
+    int time_min = 0;
+    for(int i=0;i<HistoryLog::BufferSize; i++ )
+    {
+        const MeasurementData* data =  HistoryLog::getSample(index);
+        if (data == nullptr) return;
+        time_min = (i-HistoryLog::BufferSize) * 5; //todo:: history logging offset 
+        ShellIO::printf("%4d[min] lux:%d ppfd:%d t:%.2f rh:%.2f\n\r", time_min,  data->lux, data->ppfd, data->temperature, data->humidity);
+        index = (index + 1 ) %HistoryLog::BufferSize;
+        
+    }
+}
 
 /*-------------- Shell IO -------------------*/
 char ShellIO::read()

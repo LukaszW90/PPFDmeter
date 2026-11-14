@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/build/CMakeFiles/bootloader
+/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/build/CMakeFiles/bootloader.rule
+/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/build/CMakeFiles/bootloader-complete.rule
+/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/media/lukasz/55DFF36A13D271611/programming/PPFDmeter/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

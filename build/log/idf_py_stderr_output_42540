@@ -1,0 +1,4 @@
+Command: cmake -G Ninja -DPYTHON_DEPS_CHECKED=1 -DPYTHON=/home/lukasz/.espressif/python_env/idf5.5_py3.12_env/bin/python -DESP_PLATFORM=1 -DCCACHE_ENABLE=0 /media/lukasz/55DFF36A13D271611/programming/PPFDmeter
+fatal: to nie jest repozytorium gita (ani żaden z katalogów nadrzędnych): .git
+fatal: to nie jest repozytorium gita (ani żaden z katalogów nadrzędnych): .git
+fatal: to nie jest repozytorium gita: /home/lukasz/.platformio/packages/framework-espidf/components/openthread/openthread/../../../.git/modules/components/openthread/openthread

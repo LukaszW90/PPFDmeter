@@ -29,6 +29,7 @@ extern "C" {
 #include "RhTempSensor.hpp"
 #include "Button.hpp"
 #include "controller.hpp"
+#include "Logger.hpp"
 
 namespace TaskPeriod_ms
 {
@@ -54,8 +55,9 @@ extern "C" void app_main() {
     OledDisplay::init();
     LightSensor::init();
     RhTempSensor::init();
+    Logger::init();
 
-   /// Timer::init();
+    //Timer::init();
     NvsManager::initNvs(); 
 
     controller::init();

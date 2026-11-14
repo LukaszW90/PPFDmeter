@@ -10,7 +10,7 @@ constexpr uint8_t REG_ALS_DATA = 0x04;
 constexpr float LUX_FACTOR = 0.0576f;
 
 static float RawFiltered  = -1;
-Lux2PpfdProfile currentProfile =  Lux2PpfdProfile::Led4000K;
+Lux2PpfdProfile currentProfile =  Lux2PpfdProfile::Led6500K;
 
 bool LightSensor::init()
 {

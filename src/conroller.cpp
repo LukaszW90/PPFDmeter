@@ -10,15 +10,17 @@
 #include "Timer.hpp"
 #include "BtSerial.hpp"
 #include "Logger.hpp"
+#include "HistoryLog.hpp"
 
 bool ScreenSaverEnabled = false;
 uint64_t screensaverTimer_sec = 0; 
 
 void controller::init()
 {
-    screensaverTimer_sec = Timer::getTime_sec();
+    screensaverTimer_sec = Timer::getSysTime_sec();
     ScreenSaverEnabled = false;
 
+    HistoryLog::init();
 }
 
 
@@ -44,17 +46,20 @@ void controller::periodic()
     RhTempSensor::update();
     BtSerial::Periodic();
 
+
     data.lux = LightSensor::getLux();
     data.ppfd = LightSensor::getPpfd();
     data.temperature = static_cast<uint32_t> (RhTempSensor::getTemp());
     data.humidity = static_cast<uint32_t> (RhTempSensor::getRh());
 
-    if( (Timer::getTime_sec() - screensaverTimer_sec) > 5*60)
+
+
+    if( (Timer::getSysTime_sec() - screensaverTimer_sec) > 5*60)
     {
         ScreenSaverEnabled = true;
-        if( (Timer::getTime_sec() - screensaverTimer_sec) > 5*60)
+        if( (Timer::getSysTime_sec() - screensaverTimer_sec) > 10*60)
         {
-            //todo disable oled
+            OledDisplay::sleep();
         }
 
     }
@@ -62,22 +67,31 @@ void controller::periodic()
     switch(Button::getEvent())
     {
         case Button::Event::OneClick:
-            screensaverTimer_sec = Timer::getTime_sec();
+            screensaverTimer_sec = Timer::getSysTime_sec();
             ScreenSaverEnabled = false;
+            OledDisplay::wakeup();
+
             break;
         case Button::Event::DoubleClick:
-
+            screensaverTimer_sec = Timer::getSysTime_sec();
+            ScreenSaverEnabled = false;
             BtSerial::enable();
 
             break;    
         case Button::Event::LongPress:
-            Logger::start(00,00);
-            status.recording = true;
+            screensaverTimer_sec = Timer::getSysTime_sec();
+            ScreenSaverEnabled = false;
+            Logger::start(00,00,5*60,24);
+            status.recording=Logger::getLoggerState();
+
             break;
         case Button::Event::Released:
             /* do nothing */
             break;
     }
+
+    Logger::update( data);
+    HistoryLog::update(data);
 
     OledDisplay::drawScreen(data,config,status);
 
